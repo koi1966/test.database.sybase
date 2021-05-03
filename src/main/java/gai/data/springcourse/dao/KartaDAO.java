@@ -16,7 +16,7 @@ import static gai.data.springcourse.bl.DataDAO.connectionSa;
 public class KartaDAO {
 
 
-    public static List<KartaAMT> serch(KartaAMT kar) {
+    public List<KartaAMT> serch(KartaAMT kar) {
 
         List<KartaAMT> kart = new ArrayList<>();
 

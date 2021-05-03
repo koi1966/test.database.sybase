@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>АМТ Компан</title>
+</head>
+<body>
+<div th:each="karta : ${kartaAMT}">
+    <a
+            th:href="@{/karta/{id}(id=${karta.getId()})}"
+            th:text="${karta.getFamily() + ', ' + karta.getFname()+', '
+             + karta.getMarka()+', ' + karta.getModel()+', ' + karta.getNum_cuz()
+             +', ' + karta.getData_oper()}"
+
+    >user</a>
+
+    <br/>
+
+    <hr/>
+
+    Результат:
+
+    <a href="/people/new">Create new person</a>
+    <a href="/karta/searchAMT">Компан 2</a>
+
+    <div>
+<!--        <form>-->
+<!--    <form th:method="POST" th:action="@{/karta}" th:object="${kartaAMT}">-->
+<!--        <label for="znak">Номерний знак: </label>-->
+<!--        <input type="text" th:field="*{znak}" id="znak"/>-->
+<!--        <br/>-->
+<!--        <input type="submit" value="Создать"/>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--            <form th:method="POST" th:action="@{/karta}" th:object="${kartaAMT}">-->
+<!--                <label for="Znak">Номерний знак: </label>-->
+<!--                <input type="text" th:field="*{Znak}" id="Znak"/>-->
+
+<!--                <br/>-->
+<!--                <label for="age">Enter age: </label>-->
+<!--                <input type="text" th:field="*{age}" id="age"/>-->
+
+<!--                <br/>-->
+<!--                <label for="email">Enter email: </label>-->
+<!--                <input type="text" th:field="*{email}" id="email"/>-->
+
+<!--                <br/>-->
+<!--                <input type="submit" value="search"/>-->
+
+<!--            </form>-->
+<!--</div>-->
+Проверка index.
+
+</body>
+</html>

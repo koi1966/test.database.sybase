@@ -26,7 +26,6 @@ public class KartaAMT {
     private Date data_oper;
     private String kart_id;
 
-
     public KartaAMT() { }
 
     public long getId() {

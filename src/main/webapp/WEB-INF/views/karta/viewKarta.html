@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div th:each="karta : ${KrtaAMT}">
+<div th:each="karta : ${kartaList}">
     <a
             th:href="@{/karta/{id}(id=${karta.getId()})}"
             th:text="${karta.getFamily() + ', ' + karta.getFname()+', '

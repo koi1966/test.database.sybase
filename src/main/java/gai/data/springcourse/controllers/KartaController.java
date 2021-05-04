@@ -25,23 +25,23 @@ public class KartaController {
   @GetMapping()
   public String index(Model model) {
     // Получает все из KartaDAO для отображения на html
-    model.addAttribute("kartaAMT", kartaDAO.index());
+ //   model.addAttribute("kartaAMT", kartaDAO.index());
     return "karta/index";
   }
 
   @GetMapping("/searchAMT")
-  public String searchAMT(@ModelAttribute("karta") KartaAMT karta, Model model) {
+  public String search(@ModelAttribute("karta") KartaAMT karta, Model model) {
     final List<KartaAMT> kartaAMTList = kartaDAO.serch(karta);
-    model.addAttribute("karta", kartaAMTList);
+    model.addAttribute("kartaList", kartaAMTList);
 
     return "karta/viewKarta";
   }
   // Получить с html формы поля для обработки   @PostMapping
-  @PostMapping()
-  public String search(@ModelAttribute("karta") KartaAMT kar, Model model) {
-    //             KartaDAO.serch(karta);
-    model.addAttribute("karta", kartaDAO.serch(kar));
-
-    return "karta/viewKarta";
-  }
+//  @PostMapping()
+//  public String search(@ModelAttribute("kar") KartaAMT kar, Model model) {
+//    //             KartaDAO.serch(karta);
+//    model.addAttribute("karta", kartaDAO.serch(kar));
+//
+//    return "karta/viewKarta";
+//  }
 }

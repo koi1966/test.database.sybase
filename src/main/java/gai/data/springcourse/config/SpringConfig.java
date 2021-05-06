@@ -1,16 +1,23 @@
 package gai.data.springcourse.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.web.servlet.filter.OrderedCharacterEncodingFilter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+//import org.springframework.core.Ordered;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+
+//import javax.servlet.FilterRegistration;
+//import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 @ComponentScan("gai.data.springcourse")
@@ -45,9 +52,31 @@ public class SpringConfig implements WebMvcConfigurer {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-//        resolver.setContentType(contentType);
         resolver.setTemplateEngine(templateEngine());
-        resolver.setCharacterEncoding("UTF-8");
+        resolver.setCharacterEncoding("UTF-8"); // <- this was added
+        resolver.setForceContentType(true); // <- this was added
+        resolver.setContentType("text/html; charset=UTF-8"); // <- this was added
         registry.viewResolver(resolver);
+//        FilterRegistration.Dynamic fr = servletContext.addFilter("encodingFilter", new CharacterEncodingFilter());
+//        fr.setInitParameter("encoding", "UTF-8");
+//        fr.setInitParameter("forceEncoding", "true");
+//        fr.addMappingForUrlPatterns(null, false, "/*");
     }
+
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//
+//        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+//        filter.setEncoding("UTF-8");
+//        filter.setForceEncoding(true);
+
+//        http.authorizeRequests().anyRequest().anonymous()
+//                .antMatchers("/login**", "/*.js", "/*.css", "/*.svg" ).permitAll()
+//                // ... some other config
+//                .invalidateHttpSession(true)
+//                .permitAll()
+//                .and()
+//                .addFilterBefore(filter, CsrfFilter.class); // <- this was added
+//    }
+
 }

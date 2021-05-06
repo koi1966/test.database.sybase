@@ -3,13 +3,12 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Search</title>
 </head>
 <body>
 
-<!--/*@thymesVar id="karta" type=""*/-->
-<form th:method="POST" th:action="@{/karta}" th:object="${karta}">
+<form th:method="POST" th:action="@{/karta/}" th:object="${karta}">
     <label for="Znak">Введите номерной знак: </label>
     <input type="text" th:field="*{Znak}" id="Znak"/>
 

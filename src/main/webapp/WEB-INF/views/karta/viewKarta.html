@@ -4,10 +4,10 @@
       xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>KartaView</title>
 </head>
 <body>
-
+Результат_1
 <div th:each="karta : ${kartaList}">
     <a
             th:href="@{/karta/{id}(id=${karta.getId()})}"
@@ -21,7 +21,7 @@
 
     <hr/>
 
-    Результат:
+    Результат 2:
 
     <a href="/people/new">Create new person</a>
     <a href="/karta/searchAMT">Компан 3</a>

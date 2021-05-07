@@ -9,24 +9,23 @@
 <body>
 Результат_1
 <div th:each="karta : ${kartaList}">
-    <a
-            th:href="@{/karta/{id}(id=${karta.getId()})}"
-            th:text="${karta.getFamily() + ', ' + karta.getFname()+', '
-             + karta.getMarka()+', ' + karta.getModel()+', ' + karta.getNum_cuz()
-             +', ' + karta.getData_oper()}"
-
-    >user</a>
+<!--    <a-->
+<!--            th:href="@{/karta/{id}(id=${karta.getId()})}"-->
+<!--            th:text="${karta.getFamily() + ', ' + karta.getFname()+', '-->
+<!--             + karta.getMarka()+', ' + karta.getModel()+', ' + karta.getNum_cuz()-->
+<!--             +', ' + karta.getData_oper()}"-->
+<!--            -->
+    <label for="name">Фамилия: </label>
+    <input type="text" th:field="*{karta.getFamily()}" id="name"/>
+    <br/>
+    >user</div>
 
     <br/>
 
     <hr/>
 
     Результат 2:
-
-    <a href="/people/new">Create new person</a>
-    <a href="/karta/searchAMT">Компан 3</a>
-
-    <div>
-
+<!--    <div>-->
+        <a href="/karta/searchAMT">Пошук</a>
 </body>
 </html>

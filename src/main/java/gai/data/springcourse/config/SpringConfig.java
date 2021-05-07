@@ -57,26 +57,6 @@ public class SpringConfig implements WebMvcConfigurer {
         resolver.setForceContentType(true); // <- this was added
         resolver.setContentType("text/html; charset=UTF-8"); // <- this was added
         registry.viewResolver(resolver);
-//        FilterRegistration.Dynamic fr = servletContext.addFilter("encodingFilter", new CharacterEncodingFilter());
-//        fr.setInitParameter("encoding", "UTF-8");
-//        fr.setInitParameter("forceEncoding", "true");
-//        fr.addMappingForUrlPatterns(null, false, "/*");
     }
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//
-//        CharacterEncodingFilter filter = new CharacterEncodingFilter();
-//        filter.setEncoding("UTF-8");
-//        filter.setForceEncoding(true);
-
-//        http.authorizeRequests().anyRequest().anonymous()
-//                .antMatchers("/login**", "/*.js", "/*.css", "/*.svg" ).permitAll()
-//                // ... some other config
-//                .invalidateHttpSession(true)
-//                .permitAll()
-//                .and()
-//                .addFilterBefore(filter, CsrfFilter.class); // <- this was added
-//    }
 
 }

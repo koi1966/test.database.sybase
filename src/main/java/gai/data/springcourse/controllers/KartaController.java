@@ -45,6 +45,6 @@ public class KartaController {
   public String search(@ModelAttribute("karta") KartaAMT kar, Model model) {
    final List<KartaAMT> kartaAMTList = kartaDAO.serch(kar);
    model.addAttribute("kartaList", kartaAMTList);
-    return "karta/viewKarta";
+   return "karta/viewKarta";
   }
 }

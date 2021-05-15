@@ -3,7 +3,7 @@ package gai.data.springcourse.dao;
 
 import gai.data.springcourse.models.KartaAMT;
 import org.springframework.stereotype.Component;
-
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -50,40 +50,67 @@ public class KartaDAO {
         return kart;
     }
 
-//    public List<KartaAMT> index() {
-//        List<KartaAMT> karta = new ArrayList<>();
-//        try {
+    public List<KartaAMT> AmtHystory(String Kart_id){
+        List<KartaAMT> kartHystory = new ArrayList<>();
+
+        Statement statement = null;
+        try {
+            PreparedStatement preparedStatement =
+                    connectionSa.prepareStatement("SELECT * FROM karta WHERE kart_id=?");
+            preparedStatement.setString(1, Kart_id );
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    KartaAMT AMT = new KartaAMT();
+                    AMT.setKart_id(resultSet.getString("Kart_id"));
+                    AMT.setId(resultSet.getLong("id"));
+                    AMT.setFamily(resultSet.getString("Family"));
+                    AMT.setFname(resultSet.getString("Fname"));
+                    AMT.setData_oper(resultSet.getDate("Data_oper"));
+                    AMT.setSec_name(resultSet.getString("Sec_name"));
+                    AMT.setColor(resultSet.getString("Color"));
+                    AMT.setData_v(resultSet.getString("Data_v"));
+                    AMT.setMarka(resultSet.getString("Marka"));
+                    AMT.setModel(resultSet.getString("Model"));
+                    AMT.setZnak(resultSet.getString("Znak"));
+                    AMT.setTeh_pasp(resultSet.getString("Teh_pasp"));
+                    AMT.setNum_cuz(resultSet.getString("Num_cuz"));
+                    kartHystory.add(AMT);
+                }
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return kartHystory;
+    }
+//    public List<KartaAMT> AMThistory1(String Kart_id) {
 //
-//            Statement statement = connectionSa.createStatement();
-////            String SQL = "SELECT * FROM Person";
-//            String SQL = "select * from karta where znak='49910ВВ'";
-//            try (ResultSet resultSet = statement.executeQuery(SQL)) {
-//                while (resultSet.next()) {
-//                    KartaAMT AMT = new KartaAMT();
-//                    AMT.setKart_id (resultSet.getString("Kart_id"));
-//                    AMT.setId(resultSet.getLong("id"));
-//                    AMT.setFamily(resultSet.getString("Family"));
-//                    AMT.setFname(resultSet.getString("Fname"));
-//                    AMT.setData_oper (resultSet.getDate("Data_oper"));
-//                    AMT.setSec_name(resultSet.getString("Sec_name"));
-//                    AMT.setColor(resultSet.getString("Color"));
-//                    AMT.setData_v(resultSet.getString("Data_v"));
-//                    AMT.setMarka(resultSet.getString("Marka"));
-//                    AMT.setModel(resultSet.getString("Model"));
-//                    AMT.setZnak(resultSet.getString("Znak"));
-//                    AMT.setTeh_pasp(resultSet.getString("Teh_pasp"));
-//                    AMT.setNum_cuz(resultSet.getString("Num_cuz"));
-//                    //                person.setAge(resultSet.getInt("age"));
-// //                   System.out.println(resultSet.getString("Znak"));
-//                    karta.add(AMT);
-//                }
-//  //              System.out.println("Fig_tam");
+//       List<KartaAMT> AmtH = new ArrayList<>();
+//            PreparedStatement preparedStatement =
+//            connectionSa.prepareStatement("SELECT * FROM karta WHERE kart_id=?");
+//            preparedStatement.setString(1, Kart_id );
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//
+//            KartaAMT Kartahistory = null;
+//            Kartahistory = new KartaAMT();
+//            while (resultSet.next()) {
+//                Kartahistory.setKart_id(resultSet.getString("Kart_id"));
+//                Kartahistory.setId(resultSet.getLong("id"));
+//                Kartahistory.setFamily(resultSet.getString("Family"));
+//                Kartahistory.setFname(resultSet.getString("Fname"));
+//                Kartahistory.setData_oper(resultSet.getDate("Data_oper"));
+//                Kartahistory.setSec_name(resultSet.getString("Sec_name"));
+//                Kartahistory.setColor(resultSet.getString("Color"));
+//                Kartahistory.setData_v(resultSet.getString("Data_v"));
+//                Kartahistory.setMarka(resultSet.getString("Marka"));
+//                Kartahistory.setModel(resultSet.getString("Model"));
+//                Kartahistory.setZnak(resultSet.getString("Znak"));
+//                Kartahistory.setTeh_pasp(resultSet.getString("Teh_pasp"));
+//                Kartahistory.setNum_cuz(resultSet.getString("Num_cuz"));
+//                AmtH.add(Kartahistory);
 //            }
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//        return karta;
-//    }
- }
+//        return AmtH;
+// }
+}
 
 

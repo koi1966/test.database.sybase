@@ -1,16 +1,12 @@
 package gai.data.springcourse.controllers;
-
 import gai.data.springcourse.dao.KartaDAO;
 import gai.data.springcourse.models.KartaAMT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -35,7 +31,6 @@ public class KartaController {
   public String searchAMT(@ModelAttribute("karta") KartaAMT karta, Model model) {
 //    final List<KartaAMT> kartaAMTList = kartaDAO.serch(karta);
 //    model.addAttribute("kartaList", kartaAMTList);
-
     return "karta/searchAMT";
   }
 
@@ -47,4 +42,13 @@ public class KartaController {
    model.addAttribute("kartaList", kartaAMTList);
     return "karta/viewKarta";
   }
+
+    @GetMapping("/{kart_id}/history")
+    public String AmtHystory( @PathVariable("kart_id") String Kart_id, Model model) {
+        final List<KartaAMT> AMTHys = kartaDAO.AmtHystory(Kart_id);
+        model.addAttribute("Amthystory",AMTHys);
+
+        return "karta/history";
+
+    }
 }

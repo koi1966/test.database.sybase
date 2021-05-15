@@ -9,16 +9,17 @@
 <body>
 Результат_1
 <div th:each="karta : ${kartaList}">
-<!--    <a-->
-<!--            th:href="@{/karta/{id}(id=${karta.getId()})}"-->
-<!--            th:text="${karta.getFamily() + ', ' + karta.getFname()+', '-->
-<!--             + karta.getMarka()+', ' + karta.getModel()+', ' + karta.getNum_cuz()-->
-<!--             +', ' + karta.getData_oper()}"-->
-<!--            -->
-    <label for="name">Фамилия: </label>
-    <input type="text" th:field="*{karta.getFamily()}" id="name"/>
+    <a
+            th:href="@{/karta/{id}(id=${karta.getId()})}"
+            th:text="${karta.getFamily() + ', ' + karta.getFname()+', '
+             + karta.getMarka()+', ' + karta.getModel()+', ' + karta.getNum_cuz()
+             +', ' + karta.getData_oper()}"
+    ></a>
+<!--    <label for="name">Фамилия: </label>-->
+<!--    th:href="@{/karta/{id}(id=${karta.getId()})}"-->
+<!--    <input type="text" th:field="*{karta.getFamily()}" id="name"/>-->
     <br/>
-    >user</div>
+    </div>
 
     <br/>
 

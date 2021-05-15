@@ -45,7 +45,7 @@ public class KartaController {
 
     @GetMapping("/{kart_id}/history")
     public String AmtHystory( @PathVariable("kart_id") String Kart_id, Model model) {
-        final List<KartaAMT> AMTHys = kartaDAO.AmtHystory(Kart_id);
+        final List<KartaAMT> AMTHys = kartaDAO.AmtHistory(Kart_id);
         model.addAttribute("Amthystory",AMTHys);
 
         return "karta/history";

@@ -14,19 +14,19 @@
             th:text="${karta.getFamily() + ', ' + karta.getFname()+', '
              + karta.getMarka()+', ' + karta.getModel()+', ' + karta.getNum_cuz()
              +', ' + karta.getData_oper()}"
-
-    >user</a>
+    ></a>
+<!--    <label for="name">Фамилия: </label>-->
+<!--    th:href="@{/karta/{id}(id=${karta.getId()})}"-->
+<!--    <input type="text" th:field="*{karta.getFamily()}" id="name"/>-->
+    <br/>
+    </div>
 
     <br/>
 
     <hr/>
 
     Результат 2:
-
-    <a href="/people/new">Create new person</a>
-    <a href="/karta/searchAMT">Компан 3</a>
-
-    <div>
-
+<!--    <div>-->
+        <a href="/karta/searchAMT">Пошук</a>
 </body>
 </html>

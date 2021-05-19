@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>History</title>
+</head>
+<body>
+<div th:each="Amt:${Amthystory}" >
+    <a th:text="Amt.getFamely()"
+    >
+
+    </a>
+
+</div>
+
+</body>
+</html>

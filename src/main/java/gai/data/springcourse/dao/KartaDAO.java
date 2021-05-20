@@ -50,14 +50,14 @@ public class KartaDAO {
         return kart;
     }
 
-    public List<KartaAMT> AmtHistory(String Kart_id){
+    public List<KartaAMT> AmtHistory(String kart_id){
         List<KartaAMT> kartHistory = new ArrayList<>();
 
 //        Statement statement = null;
         try {
             PreparedStatement preparedStatement =
-                    connectionSa.prepareStatement("SELECT * FROM karta WHERE kart_id=?");
-            preparedStatement.setString(1, Kart_id );
+                    connectionSa.prepareStatement("SELECT * FROM karta WHERE kart_id=? ");
+            preparedStatement.setString(1, String.valueOf(kart_id));
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     KartaAMT AMTh = new KartaAMT();

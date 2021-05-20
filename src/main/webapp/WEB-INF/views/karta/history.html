@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8"
-          xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
     <title>History</title>
 </head>
 <body>
-<div th:each="Amt:${Amthystory}" >
-    <a th:text="Amt.getFamely()"
-    >
-
-    </a>
-
+<div th:each="AmtHistoey:${Amthystory}" >
+    <a th:text="${AmtHistoey.getFamily()}"
+    ></a>
 </div>
 
 </body>

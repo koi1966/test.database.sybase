@@ -51,7 +51,4 @@ public class SpringConfig implements WebMvcConfigurer {
         resolver.setContentType("text/html; charset=UTF-8"); // <- this was added
         registry.viewResolver(resolver);
     }
-
-
-
 }

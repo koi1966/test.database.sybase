@@ -11,7 +11,6 @@
 <form th:method="POST" th:action="@{/karta/}" th:object="${karta}">
     <label for="Znak">Введите номерной знак: </label>
     <input type="text" th:field="*{Znak}" id="Znak"/>
-
     <br/>
     <input type="submit" value="Пошук"/>
 

@@ -26,6 +26,15 @@ public class KartaAMT {
     private Date data_oper;
     private String kart_id;
 
+    public String getCode_oper() {
+        return code_oper;
+    }
+
+    public void setCode_oper(String code_oper) {
+        this.code_oper = code_oper;
+    }
+
+    private String code_oper;
     public KartaAMT() { }
 
     public long getId() {

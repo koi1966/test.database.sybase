@@ -10,16 +10,21 @@
         TABLE {
             border-collapse: collapse; /* Убираем двойные линии между ячейками */
             /*width: 600px; !* Ширина таблицы *!*/
-            width="40%";
+            width: 65%;
         }
         TH, TD {
             border: 1px solid black; /* Параметры рамки */
-            text-align: center; /* Выравнивание по центру */
-            padding: 1px; /* Поля вокруг текста */
+            text-align: left; /* Выравнивание по центру */
+          /*   Поля вокруг текста */
+            padding-top: 0px;
+            padding-right: 0px;
+            padding-left: 0px;
+            padding-bottom: 0px;
+            /*td{ cursor: default;  как сделать таблицу неактивной } */
         }
         TH {
-            background: #a6bd90; /* Цвет фона ячейки */
-            height: 40px; /* Высота ячеек */
+            background: #9DD06CFF; /* Цвет фона ячейки */
+            height: 0px; /* Высота ячеек */
             /*vertical-align: bottom; !* Выравнивание по нижнему краю *!*/
             vertical-align: center;
             /*vertical-align: top; !* Выравнивание по верхнему краю ячейки *!*/
@@ -27,45 +32,36 @@
         }
         #col1 {
             width: 20%; /* Ширина первой колонки */
-            background: #ffffff; /* Цвет фона первой колонки */
+            background: #fcfbfb; /* Цвет фона первой колонки */
         }
         #col2 {
             width: 40%; /* Ширина второй колонки */
             background: #f0f0f0; /* Цвет фона второй колонки */
         }
         #col3 {
-            width: 40%; /* Ширина третьей колонки */
+            width: 5%; /* Ширина третьей колонки */
             background: #fcfbfb; /* Цвет фона третьей колонки */
         }
     </style>
 </head>
 <body>
 
-<!--<div th:each="AmtHistoey:${Amthystory}" >-->
-<!--    <a th:text="${AmtHistoey.getFamily()}"-->
-<!--    ></a>-->
-<!--</div>-->
 <div>
     <table>
-        <tr><th>Власник</th><th>Марка модель</th><th>Дата опер </th></tr>
+        <tr><th>Власник</th><th>Марка модель</th><th>Дата операції </th></tr>
 <!--        <tr><td>Ячейка 1</td><td>Ячейка 2</td></tr>-->
 <!--        <tr><td>Ячейка 3</td><td>Ячейка 4</td></tr>-->
 
 <tr th:each="AmtHistoey:${Amthystory}">
     <td id="col1"><p th:text="${AmtHistoey.getFamily()+' '+ AmtHistoey.getFname()+' '+ AmtHistoey.getSec_name()}"></p></td>
-    <td id="col2"><p th:text="${AmtHistoey.getMarka()+' '+ AmtHistoey.getModel() +'   р.в.'+AmtHistoey.getData_v()
-    +' кузов:'+ AmtHistoey.getNum_cuz()+' шассі:'+AmtHistoey.getNum_shas()+' vin:'+AmtHistoey.getKart_id()}"></p></td>
-    <td id="col3"><p th:text="${AmtHistoey.getData_oper()}" </td>
-
+    <td id="col2"><p th:text="${AmtHistoey.getMarka()+' '+ AmtHistoey.getModel() +'   р.в.'+AmtHistoey.getData_v()}"></p>
+                    <p th:text="${'кузов '+ AmtHistoey.getNum_cuz()}"></p>
+                    <p th:text="${'шасі '+AmtHistoey.getNum_shas()}"> </p>
+                    <p th:text="${'vin '+AmtHistoey.getKart_id()}"></p></td>
+    <td id="col3"><p th:text="${AmtHistoey.getData_oper()}"></p></td>
 </tr>
     </table>
 </div>
 
-<!--<table width="50%" border="0" cellpadding="4">-->
-<!--    <tr align="right" valign="top">-->
-<!--        <td><img src="images/book.png" width="199" height="133" alt="Книга"></td>-->
-<!--        <td>Lorem ipsum dolor sit amet...</td>-->
-<!--    </tr>-->
-<!--</table>-->
 </body>
 </html>

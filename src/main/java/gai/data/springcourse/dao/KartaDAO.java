@@ -52,11 +52,10 @@ public class KartaDAO {
 
     public List<KartaAMT> AmtHistory(String kart_id){
         List<KartaAMT> kartHistory = new ArrayList<>();
-
 //        Statement statement = null;
         try {
             PreparedStatement preparedStatement =
-                    connectionSa.prepareStatement("SELECT * FROM karta WHERE kart_id=? ");
+                    connectionSa.prepareStatement("SELECT * FROM karta WHERE kart_id=? ORDER BY Data_oper");
             preparedStatement.setString(1, String.valueOf(kart_id));
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {

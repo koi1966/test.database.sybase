@@ -12,8 +12,9 @@ import java.util.List;
 @RequestMapping("/karta")
 public class KartaController {
   private final KartaDAO kartaDAO;
+    private String kart_id;
 
-  @Autowired
+    @Autowired
   public KartaController(KartaDAO kartaDAO) {
     this.kartaDAO = kartaDAO;
   }

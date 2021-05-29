@@ -10,7 +10,7 @@
 Результат_1
 <div th:each="kart : ${kartaList}">
     <a
-            th:href="@{/karta/{kart_id}(kart_id=${kart.getKart_id()})}"
+            th:href="@{/karta/{id}(id=${kart.getId()})}"
             th:text="${kart.getFamily() + ', ' + kart.getFname()+', '
              + kart.getMarka()+', ' + kart.getModel()+', ' + kart.getNum_cuz()
              +', ' + kart.getData_oper()+', ' + kart.getKart_id()}"

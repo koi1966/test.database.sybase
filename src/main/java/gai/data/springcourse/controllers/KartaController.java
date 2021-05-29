@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/karta")
 public class KartaController {
   private final KartaDAO kartaDAO;
-    private String kart_id;
+//    private String kart_id;
 
     @Autowired
   public KartaController(KartaDAO kartaDAO) {
@@ -40,9 +40,9 @@ public class KartaController {
     return "karta/viewKarta";
   }
 
-    @GetMapping( "/{kart_id}")
-    public String AmtHystory(@PathVariable("kart_id") String kart_id, Model model) {
-        List<KartaAMT> AMTHys = kartaDAO.AmtHistory(kart_id);
+    @GetMapping( "/{id}")
+    public String AmtHystory(@PathVariable("id") long id, Model model) {
+        List<KartaAMT> AMTHys = kartaDAO.AmtHistory(id);
         model.addAttribute("Amthystory",AMTHys);
 
         return "karta/history";

@@ -7,61 +7,84 @@
     <title>History</title>
 
     <style type="text/css">
-        TABLE {
+        table {
             border-collapse: collapse; /* Убираем двойные линии между ячейками */
             /*width: 600px; !* Ширина таблицы *!*/
-            width: 65%;
+            width: 50%;
+            /*border-spacing: 10px 30px;*/
+            border: 1px solid red;
         }
-        TH, TD {
+        th, td {    /* ячейки таблиці */
             border: 1px solid black; /* Параметры рамки */
             text-align: left; /* Выравнивание по центру */
+            /*margin:0px;*/
+            background: #f1f1f5;
+            /*tr:hover;*/
           /*   Поля вокруг текста */
-            padding-top: 0px;
-            padding-right: 0px;
-            padding-left: 0px;
-            padding-bottom: 0px;
+          /*  padding: -5px;  !* поля вокруг текста *!*/
+            border-bottom: 1px solid #5b90d0;
+            /*height: 50px;*/
+            /*padding-right: 0px;*/
+            /*padding-left: 0px;*/
+            /*padding-bottom: 0px;*/
             /*td{ cursor: default;  как сделать таблицу неактивной } */
         }
-        TH {
-            background: #9DD06CFF; /* Цвет фона ячейки */
-            height: 0px; /* Высота ячеек */
+        th {   /* заголовок */
+            background: #bdd7a3; /* Цвет фона ячейки */
+            /*height: 0px; !* Высота ячеек *!*/
             /*vertical-align: bottom; !* Выравнивание по нижнему краю *!*/
             vertical-align: center;
             /*vertical-align: top; !* Выравнивание по верхнему краю ячейки *!*/
-            padding: 0; /* Убираем поля вокруг текста */
+            padding: 15px; /* Убираем поля вокруг текста */
+        }
+        p.a {
+            margin: 1px 0;
+        }
+
+        p.b {
+            margin: 1px 0;
         }
         #col1 {
-            width: 20%; /* Ширина первой колонки */
-            background: #fcfbfb; /* Цвет фона первой колонки */
+            width: 30%; /* Ширина первой колонки */
+            background: rgba(250, 248, 248, 0.87); /* Цвет фона первой колонки */
         }
         #col2 {
-            width: 40%; /* Ширина второй колонки */
-            background: #f0f0f0; /* Цвет фона второй колонки */
+            width: 11%; /* Ширина второй колонки */
+            background: #f5f0f0; /* Цвет фона второй колонки */
         }
         #col3 {
-            width: 5%; /* Ширина третьей колонки */
+            width: 1%; /* Ширина третьей колонки */
             background: #fcfbfb; /* Цвет фона третьей колонки */
         }
+
     </style>
 </head>
 <body>
 
+
 <div>
+
     <table>
-        <tr><th>Власник</th><th>Марка модель</th><th>Дата операції </th></tr>
+        <tr><th>Власник</th><th> Марка модель </th><th>Дата операції </th></tr>
 <!--        <tr><td>Ячейка 1</td><td>Ячейка 2</td></tr>-->
 <!--        <tr><td>Ячейка 3</td><td>Ячейка 4</td></tr>-->
 
-<tr th:each="AmtHistoey:${Amthystory}">
-    <td id="col1"><p th:text="${AmtHistoey.getFamily()+' '+ AmtHistoey.getFname()+' '+ AmtHistoey.getSec_name()}"></p></td>
-    <td id="col2"><p th:text="${AmtHistoey.getMarka()+' '+ AmtHistoey.getModel() +'   р.в.'+AmtHistoey.getData_v()}"></p>
-                    <p th:text="${'кузов '+ AmtHistoey.getNum_cuz()}"></p>
-                    <p th:text="${'шасі '+AmtHistoey.getNum_shas()}"> </p>
-                    <p th:text="${'vin '+AmtHistoey.getKart_id()}"></p></td>
-    <td id="col3"><p th:text="${AmtHistoey.getData_oper()}"></p></td>
+<tr th:each="AmtHist:${Amthystory}">
+    <td id="col1"><a th:text="${AmtHist.getFamily()+' '+ AmtHist.getFname()+' '+ AmtHist.getSec_name()}"></a></td>
+    <td id="col2"><p class="a" th:text="${AmtHist.getMarka() +' рік вип. '+AmtHist.getData_v() +', '+ AmtHist.getColor()}"></p>
+
+        <p class="a" th:text="${AmtHist.getNum_cuz!=null}? ${'Kуз.'+AmtHist.getNum_cuz}" ></p>
+
+        <p class="a" th:text="${AmtHist.getNum_shas!=null}? ${'Шас. '+AmtHist.getNum_shas}:''" ></p>
+        <p class="a" th:text="${AmtHist.getNum_dv!=null}? ${'Дв. '+AmtHist.getNum_dv}:''" ></p>
+
+<!--        <p class="a" th:text="${'Vin '+AmtHistoey.getKart_id()}"></p></td>-->
+
+    <td id="col3"><a th:text="${AmtHist.getData_oper()}"></a></td>
 </tr>
     </table>
 </div>
+
 
 </body>
 </html>

@@ -3,6 +3,7 @@ package gai.data.springcourse.dao;
 
 import gai.data.springcourse.models.KartaAMT;
 import org.springframework.stereotype.Component;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class KartaDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        String SQLa = "SELECT * from karta where znak  like " + "'"+ kar.getZnak()+ "'";
+        String SQLa = "SELECT * from karta where znak  like " + "'" + kar.getZnak() + "'";
         try (ResultSet resultSet = statement.executeQuery(SQLa)) {
             while (resultSet.next()) {
                 KartaAMT AMT = new KartaAMT();
@@ -50,29 +51,37 @@ public class KartaDAO {
         return kart;
     }
 
-    public List<KartaAMT> AmtHistory(String kart_id){
+    public List<KartaAMT> AmtHistory(long id) {
         List<KartaAMT> kartHistory = new ArrayList<>();
 //        Statement statement = null;
+        String SQL = "select Kart_id,id,Family,Fname,Sec_name,Data_oper,Color,Data_v, (Marka + ' '+Model)as Marka, " +
+                "Model,Znak,Teh_pasp,reverse(karta.num_cuz) as Num_cuz,reverse(karta.num_shas) as Num_shas," +
+                "reverse(karta.num_Dv) as num_Dv from karta where kart_id in " +
+                "(Select k2.kart_id from karta k2 where k2.id=?)" +
+                "ORDER BY Data_oper";
         try {
             PreparedStatement preparedStatement =
-                    connectionSa.prepareStatement("SELECT * FROM karta WHERE kart_id=? ORDER BY Data_oper");
-            preparedStatement.setString(1, String.valueOf(kart_id));
+                    connectionSa.prepareStatement(SQL);
+            preparedStatement.setLong(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     KartaAMT AMTh = new KartaAMT();
-                    AMTh.setKart_id(resultSet.getString("Kart_id"));
                     AMTh.setId(resultSet.getLong("id"));
-                    AMTh.setFamily(resultSet.getString("Family"));
-                    AMTh.setFname(resultSet.getString("Fname"));
+                    AMTh.setKart_id(resultSet.getString("Kart_id"));
                     AMTh.setData_oper(resultSet.getDate("Data_oper"));
-                    AMTh.setSec_name(resultSet.getString("Sec_name"));
-                    AMTh.setColor(resultSet.getString("Color"));
-                    AMTh.setData_v(resultSet.getString("Data_v"));
-                    AMTh.setMarka(resultSet.getString("Marka"));
-                    AMTh.setModel(resultSet.getString("Model"));
                     AMTh.setZnak(resultSet.getString("Znak"));
                     AMTh.setTeh_pasp(resultSet.getString("Teh_pasp"));
                     AMTh.setNum_cuz(resultSet.getString("Num_cuz"));
+                    AMTh.setNum_shas(resultSet.getString("Num_shas"));
+                    AMTh.setNum_dv(resultSet.getString("Num_dv"));
+                    AMTh.setData_v(resultSet.getString("Data_v"));
+                    AMTh.setColor(resultSet.getString("Color"));
+                    AMTh.setMarka(resultSet.getString("Marka"));
+                    AMTh.setModel(resultSet.getString("Model"));
+                    AMTh.setFamily(resultSet.getString("Family"));
+                    AMTh.setFname(resultSet.getString("Fname"));
+                    AMTh.setSec_name(resultSet.getString("Sec_name"));
+
                     kartHistory.add(AMTh);
                 }
             }

@@ -2,6 +2,7 @@ package gai.data.springcourse.dao;
 
 
 import gai.data.springcourse.models.KartaAMT;
+import gai.data.springcourse.models.PablicExample;
 import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
@@ -15,6 +16,7 @@ import static gai.data.springcourse.bl.DataDAO.connectionSa;
 
 @Component
 public class KartaDAO {
+//    public static String vin;
 
     public List<KartaAMT> serch(KartaAMT kar) {
 
@@ -31,6 +33,7 @@ public class KartaDAO {
             while (resultSet.next()) {
                 KartaAMT AMT = new KartaAMT();
                 AMT.setKart_id(resultSet.getString("Kart_id"));
+//                String vv = resultSet.getString("Karta_id");
                 AMT.setId(resultSet.getLong("id"));
                 AMT.setFamily(resultSet.getString("Family"));
                 AMT.setFname(resultSet.getString("Fname"));
@@ -48,6 +51,7 @@ public class KartaDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
         return kart;
     }
 
@@ -64,6 +68,7 @@ public class KartaDAO {
                     connectionSa.prepareStatement(SQL);
             preparedStatement.setLong(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
+//                String vv = resultSet.getString("Kart_id");
                 while (resultSet.next()) {
                     KartaAMT AMTh = new KartaAMT();
                     AMTh.setId(resultSet.getLong("id"));
@@ -81,9 +86,11 @@ public class KartaDAO {
                     AMTh.setFamily(resultSet.getString("Family"));
                     AMTh.setFname(resultSet.getString("Fname"));
                     AMTh.setSec_name(resultSet.getString("Sec_name"));
-
+//                  String vin1 = resultSet.getString("Karta_id");
+//               System.out.println(vin1);
                     kartHistory.add(AMTh);
                 }
+//                resultSet.getString("Karta_id");
             }
 
         } catch (SQLException throwables) {

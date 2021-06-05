@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" >
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
@@ -19,10 +19,10 @@
 
 <div th:each="person : ${people}">
     <a
-          th:href="@{/people/{id}(id=${person.getId()})}"
-       th:text="${person.getName() + ', ' + person.getAge()+', ' + person.getEmail()}"
+            th:href="@{/people/{id}(id=${person.getId()})}"
+            th:text="${person.getName() + ', ' + person.getAge()+', ' + person.getEmail()}"
     >user</a>
-   Результат:
+    Результат:
 </div>
 
 

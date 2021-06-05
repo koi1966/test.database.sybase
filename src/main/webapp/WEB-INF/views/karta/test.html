@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>History</title>
+  <link rel="stylesheet" href="mysite.css">
+  <!--  <link href="resources/css/mysite.css" rel="stylesheet" >-->
+
 </head>
 <body>
-<table cellspacing="0" cellpadding="4" border="1" width="100%">
-  <tr>
-    <td>Срок размещения</td>
-    <td>Ставка</td>
-  </tr>
-  <tr>
-    <td>6 месяцев</td>
-    <td char="%" align="char">9,00%</td>
-  </tr>
-  <tr>
-    <td>1 год</td>
-    <td char="%" align="char">5,00%</td>
-  </tr>
-  <tr>
-    <td>2 года</td>
-    <td char="%" align="char">4,50%</td>
-  </tr>
-</table>
+    <table >
+      <tr ><th>Власник</th><th class="th1"> Марка модель </th><th class="th1">Дата операції </th></tr>
+
+
+      <tr th:each="AmtHyst:${Amthystory}">
+        <td id="col1" ><a th:text="${AmtHyst.getFamily()+' '+ AmtHyst.getFname()+' '+ AmtHyst.getSec_name()}"></a></td>
+        <td ><p class="a" th:text="${AmtHyst.getMarka() +' рік вип. '+AmtHyst.getData_v() +', '+ AmtHyst.getColor()}"></p>
+
+          <p th:text="${AmtHyst.getNum_cuz!=null}? ${'Kуз.'+AmtHyst.getNum_cuz}:''" ></p>
+          <p th:text="${AmtHyst.getNum_shas!=null}? ${'Шас. '+AmtHyst.getNum_shas}:''" ></p>
+          <p th:text="${AmtHyst.getNum_dv!=null}? ${'Дв. '+AmtHyst.getNum_dv}:''" ></p>
+          <p th:text="${'Vin '+AmtHyst.getKart_id()}"></p></td>
+
+        <td ><a th:text="${AmtHyst.getData_oper()}"></a></td>
+      </tr>
+    </table>
+
 </body>
 </html>

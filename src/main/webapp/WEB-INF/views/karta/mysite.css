@@ -1,8 +1,9 @@
-.hystory{
+.hystory {
     width: 80%; /* ширина элемента */
     display: flex;
     flex-direction: row;
 }
+
 .tab1 {
     border-collapse: collapse; /* Убираем двойные линии между ячейками */
     /*width: 600px; !* Ширина таблицы *!*/
@@ -10,7 +11,8 @@
     /*border-spacing: 10px 30px;*/
     border: 1px solid red;
 }
-th, td {    /* ячейки таблиці */
+
+th, td { /* ячейки таблиці */
     border: 1px solid black; /* Параметры рамки */
     text-align: left; /* Выравнивание по центру */
     /*margin:0px;*/
@@ -19,22 +21,26 @@ th, td {    /* ячейки таблиці */
     border-bottom: 1px solid #5b90d0;
     /*td{ cursor: default;  как сделать таблицу неактивной } */
 }
-th {   /* заголовок */
+
+th { /* заголовок */
     background: #bdd7a3; /* Цвет фона ячейки */
     vertical-align: center;
     padding: 15px; /* Убираем поля вокруг текста */
 }
-.arest{
+
+.arest {
     width: 50%; /* ширина элемента */
     background-color: blue; /* цвет заднего фона */
 }
+
 .tab2 {
     border-collapse: collapse; /* Убираем двойные линии между ячейками */
     width: 100%;
     /*border-spacing: 10px 30px;*/
     border: 1px solid red;
 }
-.th2, .td2 {    /* ячейки таблиці */
+
+.th2, .td2 { /* ячейки таблиці */
     border: 1px solid black; /* Параметры рамки */
     text-align: left; /* Выравнивание по центру */
     /*margin:0px;*/
@@ -43,11 +49,13 @@ th {   /* заголовок */
     border-bottom: 1px solid #5b90d0;
     /*td{ cursor: default;  как сделать таблицу неактивной } */
 }
-.th2 {   /* заголовок */
+
+.th2 { /* заголовок */
     background: #e0b7a6; /* Цвет фона ячейки */
     vertical-align: center;
     padding: 15px; /* Убираем поля вокруг текста */
 }
+
 p.a {
     margin: 1px 0;
 
@@ -56,26 +64,32 @@ p.a {
 p.b {
     margin: 1px 0;
 }
-.main_conteyner{
+
+.main_conteyner {
     display: flex;
     flex-direction: row-reverse;
 }
-.arest{
+
+.arest {
     width: 50%; /* ширина элемента */
     background-color: blue; /* цвет заднего фона */
 }
+
 #col1 {
     width: 30%; /* Ширина первой колонки */
     background: rgba(250, 248, 248, 0.87); /* Цвет фона первой колонки */
 }
+
 #col2 {
     width: 11%; /* Ширина второй колонки */
     background: #f5f0f0; /* Цвет фона второй колонки */
 }
+
 #col3 {
     width: 1%; /* Ширина третьей колонки */
     background: #fcfbfb; /* Цвет фона третьей колонки */
 }
+
 /* Style the tab */
 .tab {
     overflow: hidden;

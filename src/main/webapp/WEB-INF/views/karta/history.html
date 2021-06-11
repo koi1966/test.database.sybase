@@ -6,12 +6,17 @@
     <meta charset="UTF-8">
     <title>History</title>
 
-    <!--    <style type="text/css">-->
-    <style>
+    <style type="text/css">
+        <style>
+        .history_conteyner {
+            display: flex;
+            flex-direction: row;
+        }
+
         .hystory {
             width: 50%; /* ширина элемента */
             display: flex;
-            flex-direction: row;
+            /*flex-direction: row;*/
         }
 
         .tab1 {
@@ -50,6 +55,9 @@
             border: 1px solid red;
         }
 
+        .tr2 {
+
+        }
         .th2, .td2 { /* ячейки таблиці */
             border: 1px solid black; /* Параметры рамки */
             text-align: left; /* Выравнивание по центру */
@@ -74,11 +82,6 @@
             margin: 1px 0;
         }
 
-        .main_conteyner {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-
         .arest {
             width: 50%; /* ширина элемента */
             background-color: blue; /* цвет заднего фона */
@@ -99,63 +102,22 @@
             background: #fcfbfb; /* Цвет фона третьей колонки */
         }
 
-        /* Style the tab */
-        .tab {
-            overflow: hidden;
-            border: 1px solid #ccc;
-            background-color: #f1f1f1;
-        }
-
-        /* Style the buttons inside the tab */
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 17px;
-        }
-
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-            background-color: #ddd;
-        }
-
-        /* Create an active/current tablink class */
-        .tab button.active {
-            background-color: #ccc;
-        }
-
-        /* Style the tab content */
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
     </style>
 </head>
 <body>
-<!--<div class="tab">-->
-<!--    <button class="tablinks" onclick="openCity(event, 'Історія АМТ')">Історія</button>-->
-<!--    <button class="tablinks" onclick="openCity(event, 'Арести')">Aрест</button>-->
-<!--&lt;!&ndash;    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>&ndash;&gt;-->
-<!--</div>-->
 
-<div class="main_conteyner">
+<div class="history_conteyner">
 
     <div class="arest">
-        <!--        <a th:text="${vin}"></a>-->
+
         <table class="tab2">
-            <tr th:each="AmtArest:${Amthystory}"></tr>
-            <tr>
-                <th>Арест</th>
-                <th> Марка арест</th>
-                <th>Дата арест</th>
+            <tr class="tr2" th:each="AmtArest:${arest}"></tr>
+            <tr class="tr2">
+                <th class="th2">Арест</th>
+                <th class="th2"><a th:text="${AmtArest.getWho_na}"></a></th>
+                <th class="th2">Дата арест</th>
             </tr>
-            <!--            <td class="td2" ><a th:text="${AmtArest.getFamily()+' '+ AmtArest.getFname()+' '+ AmtArest.getSec_name()}"></a></td>-->
+<!--                        <td class="td2" ><a th:text="${AmtArest.getWho_na}"></a></td>-->
             <!--            <td class="td2"><p class="a" th:text="${AmtArest.getMarka() +' рік вип. '+AmtArest.getData_v() +', '+ AmtArest.getColor()}"></p>-->
         </table>
     </div>
@@ -164,10 +126,9 @@
         <table class="tab1">
             <tr>
                 <th class="th1">Власник</th>
-                <th class="th1"> Марка модель</th>
-                <th class="th1">Дата операції</th>
+                <th class="th1">Транспортний засіб</th>
+                <th class="th1">Реєстраційна операція</th>
             </tr>
-
 
             <tr th:each="AmtHyst:${Amthystory}">
                 <td class="td1" id="col1"><a

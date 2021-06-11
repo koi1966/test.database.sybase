@@ -1,11 +1,10 @@
 package gai.data.springcourse.dao;
 
 import gai.data.springcourse.models.Person;
-import org.springframework.stereotype.Component;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 @Component
 public class PersonDAO {

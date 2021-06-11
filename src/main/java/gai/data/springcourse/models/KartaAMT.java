@@ -1,7 +1,6 @@
 package gai.data.springcourse.models;
 
 import java.util.Date;
-import java.util.Objects;
 
 public class KartaAMT {
   private long id;
@@ -25,18 +24,126 @@ public class KartaAMT {
   private String color;
   private Date data_oper;
   private String kart_id;
+  private String oper;
 
-  public String getCode_oper() {
-    return code_oper;
+  public KartaAMT(
+      long id,
+      String marka,
+      String model,
+      String teh_pasp,
+      String znak,
+      String family,
+      String fname,
+      String sec_name,
+      String obl,
+      String rajon,
+      String city,
+      String street,
+      String house,
+      String kv,
+      String num_dv,
+      String num_cuz,
+      String num_shas,
+      String data_v,
+      String color,
+      Date data_oper,
+      String kart_id,
+      String oper) {
+    this.id = id;
+    this.marka = marka;
+    this.model = model;
+    this.teh_pasp = teh_pasp;
+    this.znak = znak;
+    this.family = family;
+    this.fname = fname;
+    this.sec_name = sec_name;
+    this.obl = obl;
+    this.rajon = rajon;
+    this.city = city;
+    this.street = street;
+    this.house = house;
+    this.kv = kv;
+    this.num_dv = num_dv;
+    this.num_cuz = num_cuz;
+    this.num_shas = num_shas;
+    this.data_v = data_v;
+    this.color = color;
+    this.data_oper = data_oper;
+    this.kart_id = kart_id;
+    this.oper = oper;
   }
-
-  public void setCode_oper(String code_oper) {
-    this.code_oper = code_oper;
-  }
-
-  private String code_oper;
 
   public KartaAMT() {}
+
+  @Override
+  public String toString() {
+    return "KartaAMT{"
+        + "id="
+        + id
+        + ", marka='"
+        + marka
+        + '\''
+        + ", model='"
+        + model
+        + '\''
+        + ", teh_pasp='"
+        + teh_pasp
+        + '\''
+        + ", znak='"
+        + znak
+        + '\''
+        + ", family='"
+        + family
+        + '\''
+        + ", fname='"
+        + fname
+        + '\''
+        + ", sec_name='"
+        + sec_name
+        + '\''
+        + ", obl='"
+        + obl
+        + '\''
+        + ", rajon='"
+        + rajon
+        + '\''
+        + ", city='"
+        + city
+        + '\''
+        + ", street='"
+        + street
+        + '\''
+        + ", house='"
+        + house
+        + '\''
+        + ", kv='"
+        + kv
+        + '\''
+        + ", num_dv='"
+        + num_dv
+        + '\''
+        + ", num_cuz='"
+        + num_cuz
+        + '\''
+        + ", num_shas='"
+        + num_shas
+        + '\''
+        + ", data_v='"
+        + data_v
+        + '\''
+        + ", color='"
+        + color
+        + '\''
+        + ", data_oper="
+        + data_oper
+        + ", kart_id='"
+        + kart_id
+        + '\''
+        + ", oper='"
+        + oper
+        + '\''
+        + '}';
+  }
 
   public long getId() {
     return id;
@@ -194,7 +301,7 @@ public class KartaAMT {
     return data_oper;
   }
 
-  public void setData_oper(Date data_oper) {
+  public void setData_oper(java.sql.Date data_oper) {
     this.data_oper = data_oper;
   }
 
@@ -206,105 +313,11 @@ public class KartaAMT {
     this.kart_id = kart_id;
   }
 
-  @Override
-  public String toString() {
-    return "KartaAMT{"
-        + "id="
-        + id
-        + ", marka='"
-        + marka
-        + '\''
-        + ", model='"
-        + model
-        + '\''
-        + ", teh_pasp='"
-        + teh_pasp
-        + '\''
-        + ", znak='"
-        + znak
-        + '\''
-        + ", family='"
-        + family
-        + '\''
-        + ", fname='"
-        + fname
-        + '\''
-        + ", sec_name='"
-        + sec_name
-        + '\''
-        + ", obl='"
-        + obl
-        + '\''
-        + ", rajon='"
-        + rajon
-        + '\''
-        + ", city='"
-        + city
-        + '\''
-        + ", street='"
-        + street
-        + '\''
-        + ", house='"
-        + house
-        + '\''
-        + ", kv='"
-        + kv
-        + '\''
-        + ", num_dv='"
-        + num_dv
-        + '\''
-        + ", num_cuz='"
-        + num_cuz
-        + '\''
-        + ", num_shas='"
-        + num_shas
-        + '\''
-        + ", data_v='"
-        + data_v
-        + '\''
-        + ", color='"
-        + color
-        + '\''
-        + ", data_oper="
-        + data_oper
-        + ", kart_id='"
-        + kart_id
-        + '\''
-        + '}';
+  public String getOper() {
+    return oper;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    KartaAMT kartaAMT = (KartaAMT) o;
-    return id == kartaAMT.id
-        && Objects.equals(marka, kartaAMT.marka)
-        && Objects.equals(model, kartaAMT.model)
-        && Objects.equals(teh_pasp, kartaAMT.teh_pasp)
-        && Objects.equals(znak, kartaAMT.znak)
-        && Objects.equals(family, kartaAMT.family)
-        && Objects.equals(fname, kartaAMT.fname)
-        && Objects.equals(sec_name, kartaAMT.sec_name)
-        && Objects.equals(obl, kartaAMT.obl)
-        && Objects.equals(rajon, kartaAMT.rajon)
-        && Objects.equals(city, kartaAMT.city)
-        && Objects.equals(street, kartaAMT.street)
-        && Objects.equals(house, kartaAMT.house)
-        && Objects.equals(kv, kartaAMT.kv)
-        && Objects.equals(num_dv, kartaAMT.num_dv)
-        && Objects.equals(num_cuz, kartaAMT.num_cuz)
-        && Objects.equals(num_shas, kartaAMT.num_shas)
-        && Objects.equals(data_v, kartaAMT.data_v)
-        && Objects.equals(color, kartaAMT.color)
-        && Objects.equals(data_oper, kartaAMT.data_oper)
-        && Objects.equals(kart_id, kartaAMT.kart_id);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        id, marka, model, teh_pasp, znak, family, fname, sec_name, obl, rajon, city, street, house,
-        kv, num_dv, num_cuz, num_shas, data_v, color, data_oper, kart_id);
+  public void setOper(String oper) {
+    this.oper = oper;
   }
 }

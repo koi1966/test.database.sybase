@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <title>History</title>
     <link rel="stylesheet" href="mysite.css">
-    <!--  <link href="resources/css/mysite.css" rel="stylesheet" >-->
 
 </head>
 <body>
@@ -16,7 +15,6 @@
         <th class="th1"> Марка модель</th>
         <th class="th1">Дата операції</th>
     </tr>
-
 
     <tr th:each="AmtHyst:${Amthystory}">
         <td id="col1"><a th:text="${AmtHyst.getFamily()+' '+ AmtHyst.getFname()+' '+ AmtHyst.getSec_name()}"></a></td>

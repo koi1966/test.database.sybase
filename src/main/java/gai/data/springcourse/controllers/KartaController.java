@@ -1,13 +1,14 @@
 package gai.data.springcourse.controllers;
 
+import gai.data.springcourse.dao.ArestDAO;
 import gai.data.springcourse.dao.KartaDAO;
+import gai.data.springcourse.models.ArestAMT;
 import gai.data.springcourse.models.KartaAMT;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/karta")
@@ -32,23 +33,26 @@ public class KartaController {
   public String search(@ModelAttribute("karta") KartaAMT kar, Model model) {
     final List<KartaAMT> kartaAMTList = kartaDAO.serch(kar);
     model.addAttribute("kartaList", kartaAMTList);
-    return "karta/viewKarta";
+    return "karta/viewkarta";
   }
 
   @GetMapping("/{id}")
   public String AmtHystory(@PathVariable("id") long id, Model model) {
     List<KartaAMT> AMTHys = kartaDAO.AmtHistory(id);
     System.out.println(AMTHys.get(1));
+    String kart_id1 = AMTHys.get(0).getKart_id();
+
     if (!AMTHys.isEmpty()) {
       KartaAMT kartaAMT = AMTHys.get(0);
       String kart_id = kartaAMT.getKart_id();
-      // Serch_Arest(kart_id);
+      // Serch_Arest(kart_id); // реализовать поиск по арестам
+      List<ArestAMT> ArestA = new ArestDAO().Serch_Arest(kart_id);
+      model.addAttribute("arest", ArestA); // передать найденый арест на вьюшку
     }
 
-    //        model.addAttribute("AmtArest",AMTArest);
     model.addAttribute("Amthystory", AMTHys);
-
-    //        return "karta/history";
-    return "karta/test";
+    //            return "karta/history";
+    //    return "karta/test";
+    return "karta/historearest";
   }
 }

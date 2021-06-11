@@ -1,20 +1,18 @@
 package gai.data.springcourse.dao;
 
-import gai.data.springcourse.models.KartaAMT;
-import org.springframework.stereotype.Component;
+import static gai.data.springcourse.bl.DataDAO.connectionSa;
 
+import gai.data.springcourse.models.KartaAMT;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import static gai.data.springcourse.bl.DataDAO.connectionSa;
+import org.springframework.stereotype.Component;
 
 @Component
 public class KartaDAO {
-  //    public static String vin;
 
   public List<KartaAMT> serch(KartaAMT kar) {
 
@@ -26,12 +24,12 @@ public class KartaDAO {
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }
-    String SQLa = "SELECT * from karta where znak  like " + "'" + kar.getZnak() + "'";
+    String SQLa = "SELECT * from karta where znak like " + "'" + kar.getZnak() + "'";
     try (ResultSet resultSet = statement.executeQuery(SQLa)) {
       while (resultSet.next()) {
         KartaAMT AMT = new KartaAMT();
         AMT.setKart_id(resultSet.getString("Kart_id"));
-        //                String vv = resultSet.getString("Karta_id");
+        String vv = resultSet.getString("Kart_id");
         AMT.setId(resultSet.getLong("id"));
         AMT.setFamily(resultSet.getString("Family"));
         AMT.setFname(resultSet.getString("Fname"));
@@ -57,11 +55,8 @@ public class KartaDAO {
     List<KartaAMT> kartHistory = new ArrayList<>();
     //        Statement statement = null;
     String SQL =
-        "select Kart_id,id,Family,Fname,Sec_name,Data_oper,Color,Data_v, (Marka + ' '+Model)as Marka, "
-            + "Model,Znak,Teh_pasp,reverse(karta.num_cuz) as Num_cuz,reverse(karta.num_shas) as Num_shas,"
-            + "reverse(karta.num_Dv) as num_Dv from karta where kart_id in "
-            + "(Select k2.kart_id from karta k2 where k2.id=?)"
-            + "ORDER BY Data_oper";
+        "select id,Kart_id,Data_oper,Data_v,Znak,kv,Teh_pasp,Family,Fname,Sec_name,house,street,city,rajon,obl,Znak,Teh_pasp,Color,(Marka + ' '+Model)as Marka,reverse(karta.num_cuz) as Num_cuz,reverse(karta.num_shas) as Num_shas,reverse(karta.num_Dv) as num_Dv, oper.*  from karta, oper where kart_id in (Select k2.kart_id from karta k2 where k2.id=?) and substring(karta.code_oper,1,2)=oper.oper_id  ORDER BY Data_oper";
+
     try {
       PreparedStatement preparedStatement = connectionSa.prepareStatement(SQL);
       preparedStatement.setLong(1, id);
@@ -71,6 +66,8 @@ public class KartaDAO {
           KartaAMT AMTh = new KartaAMT();
           AMTh.setId(resultSet.getLong("id"));
           AMTh.setKart_id(resultSet.getString("Kart_id"));
+          //                    String dfd = resultSet.getString("Kart_id");
+          //          AMTh.setData_oper(resultSet.getDate("Data_oper"));
           AMTh.setData_oper(resultSet.getDate("Data_oper"));
           AMTh.setZnak(resultSet.getString("Znak"));
           AMTh.setTeh_pasp(resultSet.getString("Teh_pasp"));
@@ -80,10 +77,19 @@ public class KartaDAO {
           AMTh.setData_v(resultSet.getString("Data_v"));
           AMTh.setColor(resultSet.getString("Color"));
           AMTh.setMarka(resultSet.getString("Marka"));
-          AMTh.setModel(resultSet.getString("Model"));
+          //          AMTh.setModel(resultSet.getString("Model"));
           AMTh.setFamily(resultSet.getString("Family"));
           AMTh.setFname(resultSet.getString("Fname"));
           AMTh.setSec_name(resultSet.getString("Sec_name"));
+          AMTh.setOper(resultSet.getString("oper"));
+          AMTh.setObl(resultSet.getString("obl"));
+          AMTh.setRajon(resultSet.getString("rajon"));
+          AMTh.setCity(resultSet.getString("city"));
+          AMTh.setStreet(resultSet.getString("street"));
+          AMTh.setHouse(resultSet.getString("house"));
+          AMTh.setKv(resultSet.getString("kv"));
+          AMTh.setOper(resultSet.getString("oper"));
+
           //                  String vin1 = resultSet.getString("Karta_id");
           //               System.out.println(vin1);
           kartHistory.add(AMTh);

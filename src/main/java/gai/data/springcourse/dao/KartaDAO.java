@@ -8,7 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import net.sourceforge.jtds.jdbc.DateTime;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,7 +27,7 @@ public class KartaDAO {
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }
-    String SQLa = "SELECT * from karta where znak like " + "'" + kar.getZnak() + "'";
+    String SQLa = "SELECT * from karta where znak like " + "'" + kar.getZnak() + "'" + " ORDER BY Data_oper , kart_id";
     try (ResultSet resultSet = statement.executeQuery(SQLa)) {
       while (resultSet.next()) {
         KartaAMT AMT = new KartaAMT();
@@ -66,8 +69,6 @@ public class KartaDAO {
           KartaAMT AMTh = new KartaAMT();
           AMTh.setId(resultSet.getLong("id"));
           AMTh.setKart_id(resultSet.getString("Kart_id"));
-          //                    String dfd = resultSet.getString("Kart_id");
-          //          AMTh.setData_oper(resultSet.getDate("Data_oper"));
           AMTh.setData_oper(resultSet.getDate("Data_oper"));
           AMTh.setZnak(resultSet.getString("Znak"));
           AMTh.setTeh_pasp(resultSet.getString("Teh_pasp"));
@@ -77,7 +78,6 @@ public class KartaDAO {
           AMTh.setData_v(resultSet.getString("Data_v"));
           AMTh.setColor(resultSet.getString("Color"));
           AMTh.setMarka(resultSet.getString("Marka"));
-          //          AMTh.setModel(resultSet.getString("Model"));
           AMTh.setFamily(resultSet.getString("Family"));
           AMTh.setFname(resultSet.getString("Fname"));
           AMTh.setSec_name(resultSet.getString("Sec_name"));
@@ -90,11 +90,8 @@ public class KartaDAO {
           AMTh.setKv(resultSet.getString("kv"));
           AMTh.setOper(resultSet.getString("oper"));
 
-          //                  String vin1 = resultSet.getString("Karta_id");
-          //               System.out.println(vin1);
           kartHistory.add(AMTh);
         }
-        //                resultSet.getString("Karta_id");
       }
 
     } catch (SQLException throwables) {

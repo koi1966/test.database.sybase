@@ -10,9 +10,16 @@
 
 <form th:method="POST" th:action="@{/karta/}" th:object="${karta}">
     <label for="Znak">Введите номерной знак: </label>
-    <input type="text" th:field="*{Znak}" id="Znak"/>
+    <input type="text" th:field="*{znak}" id="Znak"/>
+    <br/>
+    <label for="Znak">Свідоцтво  про  реєстр : </label>
+    <input type="text" th:field="*{teh_pasp}" id="teh_pasp"/>
     <br/>
     <input type="submit" value="Пошук"/>
+    <br/>
+    <input type="checkbox">
+    <br/>
+    <input type="date">
 
 </form>
 

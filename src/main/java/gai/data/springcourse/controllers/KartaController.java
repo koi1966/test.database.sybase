@@ -40,12 +40,14 @@ public class KartaController {
   public String AmtHystory(@PathVariable("id") long id, Model model) {
     List<KartaAMT> AMTHys = kartaDAO.AmtHistory(id);
     System.out.println(AMTHys.get(0));
-//    String kart_id1 = AMTHys.get(0).getKart_id();
+    //    String kart_id1 = AMTHys.get(0).getKart_id();
     if (!AMTHys.isEmpty()) {
       KartaAMT kartaAMT = AMTHys.get(0);
       String kart_id = kartaAMT.getKart_id();
 
-      List<ArestAMT> ArestA = new ArestDAO().Serch_Arest(kart_id);// реализовать поиск по арестам Serch_Arest по kart_id
+      List<ArestAMT> ArestA =
+          new ArestDAO()
+              .Serch_Arest(kart_id); // реализовать поиск по арестам Serch_Arest по kart_id
       model.addAttribute("arest", ArestA); // передать найденый арест на вьюшку
     }
 

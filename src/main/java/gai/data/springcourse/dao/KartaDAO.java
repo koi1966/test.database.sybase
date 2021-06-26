@@ -8,10 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import net.sourceforge.jtds.jdbc.DateTime;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,7 +24,15 @@ public class KartaDAO {
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }
-    String SQLa = "SELECT * from karta where znak like " + "'" + kar.getZnak() + "'" + " ORDER BY Data_oper , kart_id";
+    String SQLa = "SELECT * from karta where ";
+    if (!kar.getZnak().isEmpty()) {
+      SQLa = SQLa + "znak like '" + kar.getZnak() + "' ";
+    }
+    if (!kar.getTeh_pasp().isEmpty()) {
+      SQLa = SQLa + "Teh_pasp like '" + kar.getTeh_pasp() + "' ";
+    }
+    SQLa = SQLa + "ORDER BY Data_oper, kart_id";
+
     try (ResultSet resultSet = statement.executeQuery(SQLa)) {
       while (resultSet.next()) {
         KartaAMT AMT = new KartaAMT();
@@ -58,13 +63,21 @@ public class KartaDAO {
     List<KartaAMT> kartHistory = new ArrayList<>();
     //        Statement statement = null;
     String SQL =
-        "select id,Kart_id,Data_oper,Data_v,Znak,kv,Teh_pasp,Family,Fname,Sec_name,house,street,city,rajon,obl,Znak,Teh_pasp,Color,(Marka + ' '+Model)as Marka,reverse(karta.num_cuz) as Num_cuz,reverse(karta.num_shas) as Num_shas,reverse(karta.num_Dv) as num_Dv, oper.*  from karta, oper where kart_id in (Select k2.kart_id from karta k2 where k2.id=?) and substring(karta.code_oper,1,2)=oper.oper_id  ORDER BY Data_oper";
+        "" //
+            + "select id,Kart_id,Data_oper,Data_v,Znak,kv,Teh_pasp,Family,Fname,Sec_name,house,street,city,rajon,obl," //
+            + "Znak,Teh_pasp,Color,(Marka + ' '+Model)as Marka,reverse(karta.num_cuz) as Num_cuz," //
+            + "reverse(karta.num_shas) as Num_shas,reverse(karta.num_Dv) as num_Dv, oper.*  " //
+            + "from karta, oper " //
+            + "where kart_id in (Select k2.kart_id from karta k2 where k2.id=?) "
+            + "and substring(karta.code_oper,1,2)=oper.oper_id  "
+            + "ORDER BY Data_oper";
 
+    //   "select
+    // id,Kart_id,Data_oper,Data_v,Znak,kv,Teh_pasp,Family,Fname,Sec_name,house,street,city,rajon,obl,Znak,Teh_pasp,Color,(Marka + ' '+Model)as Marka,reverse(karta.num_cuz) as Num_cuz,reverse(karta.num_shas) as Num_shas,reverse(karta.num_Dv) as num_Dv, oper.*  from karta, oper where kart_id in (Select k2.kart_id from karta k2 where k2.id=?) and substring(karta.code_oper,1,2)=oper.oper_id  ORDER BY Data_oper";
     try {
       PreparedStatement preparedStatement = connectionSa.prepareStatement(SQL);
       preparedStatement.setLong(1, id);
       try (ResultSet resultSet = preparedStatement.executeQuery()) {
-        //                String vv = resultSet.getString("Kart_id");
         while (resultSet.next()) {
           KartaAMT AMTh = new KartaAMT();
           AMTh.setId(resultSet.getLong("id"));

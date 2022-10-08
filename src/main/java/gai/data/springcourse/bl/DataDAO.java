@@ -13,7 +13,6 @@ public class DataDAO {
     private static final String USERNAME = "view_user";
     private static final String PASSWORD = "view_user";
 
-
     public static Connection connectionSa;
     static {
         try {

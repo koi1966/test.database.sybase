@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -29,8 +28,8 @@ public class KartaController {
 
   @GetMapping("/searchAMT")
   public String searchAMT(@ModelAttribute("karta") KartaAMT karta, Model model) {
-//    final List<KartaAMT> kartaAMTList = kartaDAO.serch(karta);
-//    model.addAttribute("kartaList", kartaAMTList);
+    final List<KartaAMT> kartaAMTList = kartaDAO.serch(karta);
+    model.addAttribute("kartaList", kartaAMTList);
     return "karta/searchAMT";
   }
 
@@ -43,7 +42,8 @@ public class KartaController {
    return "karta/viewKarta";
   }
 
-    @GetMapping("/{kart_id}/history")
+//    @GetMapping("/{kart_id}/history")
+    @GetMapping("/{kart_id}")
     public String AmtHystory( @PathVariable("kart_id") String Kart_id, Model model) {
         final List<KartaAMT> AMTHys = kartaDAO.AmtHistory(Kart_id);
         model.addAttribute("Amthystory",AMTHys);

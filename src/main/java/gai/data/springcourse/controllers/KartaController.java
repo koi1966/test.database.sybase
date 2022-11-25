@@ -2,7 +2,9 @@ package gai.data.springcourse.controllers;
 
 import gai.data.springcourse.dao.ArestDAO;
 import gai.data.springcourse.dao.KartaDAO;
+import gai.data.springcourse.dao.KartaDAOExport;
 import gai.data.springcourse.models.ArestAMT;
+import gai.data.springcourse.models.Karta;
 import gai.data.springcourse.models.KartaAMT;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/karta")
 public class KartaController {
   private final KartaDAO kartaDAO;
-  //    private String kart_id;
+  private final KartaDAOExport kartaExport;
 
   @Autowired
-  public KartaController(KartaDAO kartaDAO) {
+  public KartaController(KartaDAO kartaDAO, KartaDAOExport kartaExport) {
     this.kartaDAO = kartaDAO;
+
+    this.kartaExport = kartaExport;
   }
 
   // Получает все из KartaDAO для отображения на html
@@ -56,4 +60,16 @@ public class KartaController {
     //    return "karta/test";
     return "karta/historearest";
   }
+
+  @GetMapping("/migrationAMT")
+  public String migrationKarta(){
+    final List<Karta> karta = kartaExport.searchKarta();
+    System.out.println(karta.toString());
+    return null;
+  }
+
+  public KartaDAOExport getKartaExport() {
+    return kartaExport;
+  }
+//  searchKarta
 }

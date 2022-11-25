@@ -28,9 +28,11 @@ public class KartaDAO {
     if (!kar.getZnak().isEmpty()) {
       SQLa = SQLa + "znak like '" + kar.getZnak() + "' ";
     }
+
     if (!kar.getTeh_pasp().isEmpty()) {
       SQLa = SQLa + "Teh_pasp like '" + kar.getTeh_pasp() + "' ";
     }
+
     SQLa = SQLa + "ORDER BY Data_oper, kart_id";
 
     try (ResultSet resultSet = statement.executeQuery(SQLa)) {

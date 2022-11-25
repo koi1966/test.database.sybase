@@ -2,7 +2,7 @@ package gai.data.springcourse.controllers;
 
 import gai.data.springcourse.dao.PersonDAO;
 import gai.data.springcourse.models.Person;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +28,7 @@ public class PeopleController {
 
   @GetMapping("/{id}")
   public String show(@PathVariable("id") int id, Model model) {
-    // Получить одну запись  по /{id} найти в DAI и вернуть на прездставление
+    // Получить одну запись  по /{id} найти в DAI и вернуть на представление
     model.addAttribute("person", personDAO.show(id));
     return "people/show";
   }

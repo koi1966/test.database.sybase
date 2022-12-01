@@ -5,6 +5,7 @@ import gai.data.springcourse.models.Karta;
 import org.springframework.stereotype.Component;
 
 
+import java.io.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,11 +27,16 @@ public class KartaDAOExport {
             throwables.printStackTrace();
         }
 
-        String SQLa = "SELECT * from gai.dbo.karta where id = 5";
+//        String SQLa = "SELECT * from gai.dbo.karta ";
+        String SQLa = "SELECT * from gai.dbo.karta WHERE id BETWEEN 501 AND 1500";
+
 //        String SQLa = "SELECT * from gai.dbo.karta where znak = "+" '"+ "АМ3223ВА'";
         try {
+
             //  Warning:(31, 47) Method invocation 'executeQuery' may produce 'NullPointerException'
             try (ResultSet resultSet = statement.executeQuery(SQLa)) {
+
+                FileWriter writer = new FileWriter("c:/outputKarta.txt", true);
 
                 while (resultSet.next()) {
                     Karta KartaAMT = new Karta();
@@ -106,9 +112,17 @@ public class KartaDAOExport {
                     KartaAMT.setMasa1(resultSet.getInt("masa1"));
 
                     kartaAMTList.add(KartaAMT);
+                    // Write to file
+//                    System.out.println(kartaAMTList.toString());
+//                    fr.write("kartaAMTList.toString()");
+                    writer.write(kartaAMTList.toString()+"\n");
+
+                    writer.flush();
                 }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            System.out.println(kartaAMTList.toString());
+//            System.out.println(kartaAMTList.toString());
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

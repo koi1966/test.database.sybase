@@ -667,4 +667,74 @@ public class Karta {
         this.masa1 = masa1;
     }
 
+    @Override
+    public String toString() {
+        return "Karta{" +
+                "id=" + id +
+                ", kart_id='" + kart_id + '\'' +
+                ", data_oper=" + data_oper +
+                ", reg_def=" + reg_def +
+                ", num_dv='" + num_dv + '\'' +
+                ", num_cuz='" + num_cuz + '\'' +
+                ", num_shas='" + num_shas + '\'' +
+                ", data_v=" + data_v +
+                ", color='" + color + '\'' +
+                ", cuzov='" + cuzov + '\'' +
+                ", tip='" + tip + '\'' +
+                ", marka='" + marka + '\'' +
+                ", model='" + model + '\'' +
+                ", who=" + who +
+                ", teh_pasp='" + teh_pasp + '\'' +
+                ", type_zn=" + type_zn +
+                ", znak='" + znak + '\'' +
+                ", annot='" + annot + '\'' +
+                ", code_oper='" + code_oper + '\'' +
+                ", nom_naklad=" + nom_naklad +
+                ", data_naklad=" + data_naklad +
+                ", masa=" + masa +
+                ", status=" + status +
+                ", region='" + region + '\'' +
+                ", ministr_name='" + ministr_name + '\'' +
+                ", insp='" + insp + '\'' +
+                ", ispekt_osm='" + ispekt_osm + '\'' +
+                ", who_out='" + who_out + '\'' +
+                ", regim=" + regim +
+                ", power='" + power + '\'' +
+                ", volume='" + volume + '\'' +
+                ", cylinder='" + cylinder + '\'' +
+                ", door='" + door + '\'' +
+                ", fuel='" + fuel + '\'' +
+                ", place='" + place + '\'' +
+                ", tom='" + tom + '\'' +
+                ", sob_id='" + sob_id + '\'' +
+                ", family='" + family + '\'' +
+                ", fname='" + fname + '\'' +
+                ", sec_name='" + sec_name + '\'' +
+                ", family_lat='" + family_lat + '\'' +
+                ", fname_lat='" + fname_lat + '\'' +
+                ", permis='" + permis + '\'' +
+                ", born=" + born +
+                ", pasport='" + pasport + '\'' +
+                ", pasp_cto='" + pasp_cto + '\'' +
+                ", obl='" + obl + '\'' +
+                ", rajon='" + rajon + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", house='" + house + '\'' +
+                ", corp='" + corp + '\'' +
+                ", kv='" + kv + '\'' +
+                ", tel='" + tel + '\'' +
+                ", tel_work='" + tel_work + '\'' +
+                ", office='" + office + '\'' +
+                ", dolj='" + dolj + '\'' +
+                ", obl_g='" + obl_g + '\'' +
+                ", rajon_g='" + rajon_g + '\'' +
+                ", city_g='" + city_g + '\'' +
+                ", street_g='" + street_g + '\'' +
+                ", corp_g='" + corp_g + '\'' +
+                ", house_g='" + house_g + '\'' +
+                ", tel_g='" + tel_g + '\'' +
+                ", masa1=" + masa1 +
+                '}';
+    }
 }

@@ -6,6 +6,8 @@ import gai.data.springcourse.dao.KartaDAOExport;
 import gai.data.springcourse.models.ArestAMT;
 import gai.data.springcourse.models.Karta;
 import gai.data.springcourse.models.KartaAMT;
+
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,15 +63,11 @@ public class KartaController {
     return "karta/historearest";
   }
 
-  @GetMapping("/migrationAMT")
-  public String migrationKarta(){
+  @GetMapping("/m")
+  public String migrationKarta() throws IOException {
     final List<Karta> karta = kartaExport.searchKarta();
-    System.out.println(karta.toString());
+//    System.out.println(karta.toString());
     return null;
   }
 
-  public KartaDAOExport getKartaExport() {
-    return kartaExport;
-  }
-//  searchKarta
 }

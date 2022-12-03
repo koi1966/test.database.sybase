@@ -46,19 +46,19 @@
                 <a class="a" th:text="${#dates.format(kart.getData_oper, 'dd.MM.yyyy')}"></a>
             </td>
             <td>
-                <a th:href="@{/karta/{id}(id=${kart.getId()})}"
+                <a th:href="@{/kartaSybase/{id}(id=${kart.getId()})}"
                         th:text="${kart.getZnak()+'  спр : '+ kart.getTeh_pasp()}"></a>
             </td>
             <td>
-                <a th:href="@{/karta/{id}(id=${kart.getId()})}"
+                <a th:href="@{/kartaSybase/{id}(id=${kart.getId()})}"
                         th:text="${kart.getKart_id()}"></a>
             </td>
 
-            <td> <a th:href="@{/karta/{id}(id=${kart.getId()})}"
+            <td> <a th:href="@{/kartaSybase/{id}(id=${kart.getId()})}"
                     th:text="${kart.getMarka()+' ' + kart.getModel() +'  р.в. '+kart.getData_v()}" ></a>
             </td>
             <td>
-                <a th:href="@{/karta/{id}(id=${kart.getId()})}"
+                <a th:href="@{/kartaSybase/{id}(id=${kart.getId()})}"
                         th:text="${kart.getFamily() + ' ' + kart.getFname()+' '+ kart.getSec_name()}" ></a>
             </td>
 
@@ -72,6 +72,6 @@
 <br/>
 <hr/>
 Результат
-<a href="/karta/searchAMT">Пошук</a>
+<a href="/kartaSybase/searchAMT">Пошук</a>
 </body>
 </html>

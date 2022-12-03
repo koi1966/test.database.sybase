@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class Karta {
+public class KartaSybase {
     private Long id;
     private String kart_id;
     private LocalDate data_oper;
@@ -74,7 +74,7 @@ public class Karta {
     private String tel_g;
     private int masa1;
 
-    public Karta() {
+    public KartaSybase() {
     }
     //        '^'
 
@@ -599,7 +599,7 @@ public class Karta {
         this.masa1 = masa1;
     }
 
-    public Karta(Long id, String kart_id, LocalDate data_oper, int reg_def, String num_dv, String num_cuz, String num_shas, int data_v, String color, String cuzov, String tip, String marka, String model, int who, String teh_pasp, int type_zn, String znak, String annot, String code_oper, int nom_naklad, LocalDate data_naklad, int masa, int status, String region, String ministr_name, String insp, String ispekt_osm, String who_out, int regim, String power, String volume, String cylinder, String door, String fuel, String place, String tom, String sob_id, String family, String fname, String sec_name, String family_lat, String fname_lat, String permis, LocalDate born, String pasport, String pasp_cto, String obl, String rajon, String city, String street, String house, String corp, String kv, String tel, String tel_work, String office, String dolj, String obl_g, String rajon_g, String city_g, String street_g, String corp_g, String house_g, String tel_g, int masa1) {
+    public KartaSybase(Long id, String kart_id, LocalDate data_oper, int reg_def, String num_dv, String num_cuz, String num_shas, int data_v, String color, String cuzov, String tip, String marka, String model, int who, String teh_pasp, int type_zn, String znak, String annot, String code_oper, int nom_naklad, LocalDate data_naklad, int masa, int status, String region, String ministr_name, String insp, String ispekt_osm, String who_out, int regim, String power, String volume, String cylinder, String door, String fuel, String place, String tom, String sob_id, String family, String fname, String sec_name, String family_lat, String fname_lat, String permis, LocalDate born, String pasport, String pasp_cto, String obl, String rajon, String city, String street, String house, String corp, String kv, String tel, String tel_work, String office, String dolj, String obl_g, String rajon_g, String city_g, String street_g, String corp_g, String house_g, String tel_g, int masa1) {
         this.id = id;
         this.kart_id = kart_id;
         this.data_oper = data_oper;

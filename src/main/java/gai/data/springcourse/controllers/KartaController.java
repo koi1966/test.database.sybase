@@ -2,13 +2,14 @@ package gai.data.springcourse.controllers;
 
 import gai.data.springcourse.dao.ArestDAO;
 import gai.data.springcourse.dao.KartaDAO;
-import gai.data.springcourse.dao.KartaDAOExport;
+import gai.data.springcourse.dao.KartaDAOSybase;
 import gai.data.springcourse.models.ArestAMT;
-import gai.data.springcourse.models.Karta;
+import gai.data.springcourse.models.KartaSybase;
 import gai.data.springcourse.models.KartaAMT;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +19,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/karta")
 public class KartaController {
   private final KartaDAO kartaDAO;
-  private final KartaDAOExport kartaExport;
+  private final KartaDAOSybase kartaExport;
 
   @Autowired
-  public KartaController(KartaDAO kartaDAO, KartaDAOExport kartaExport) {
+  public KartaController(KartaDAO kartaDAO, KartaDAOSybase kartaExport) {
     this.kartaDAO = kartaDAO;
 
     this.kartaExport = kartaExport;
@@ -65,7 +66,7 @@ public class KartaController {
 
   @GetMapping("/m")
   public String migrationKarta() throws IOException {
-    final List<Karta> karta = kartaExport.searchKarta();
+    final List<KartaSybase> kartaSybase = kartaExport.searchKarta();
 //    System.out.println(karta.toString());
     return null;
   }

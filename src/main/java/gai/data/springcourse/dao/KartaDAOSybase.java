@@ -17,6 +17,13 @@ import static gai.data.springcourse.bl.DataDAO.connectionSa;
 
 @Component
 public class KartaDAOSybase {
+
+    private final KartaDAOPostgres kartaDAOPostgres;
+
+    public KartaDAOSybase(KartaDAOPostgres kartaDAOPostgres) {
+        this.kartaDAOPostgres = kartaDAOPostgres;
+    }
+
     public List<KartaSybase> searchKarta() {
 
         List<KartaSybase> kartaSybaseAMTList = new ArrayList<>();
@@ -28,17 +35,17 @@ public class KartaDAOSybase {
         }
 
 //        String SQLa = "SELECT * from gai.dbo.karta ";
-        String SQLa = "SELECT * from gai.dbo.karta WHERE id BETWEEN 501 AND 1500";
+        String SQLa = "SELECT * from gai.dbo.karta WHERE id BETWEEN 1 AND 6";
 
         try {
 
             try (ResultSet resultSet = statement.executeQuery(SQLa)) {
 
-                FileWriter writer = new FileWriter("c:/outputKarta.txt", true);
+//                FileWriter writer = new FileWriter("c:/outputKarta.txt", true);
 
                 while (resultSet.next()) {
                     KartaSybase kartaSybaseAMT = new KartaSybase();
-                    kartaSybaseAMT.setId(resultSet.getLong("id"));
+//                    kartaSybaseAMT.setId(resultSet.getLong("id"));
                     kartaSybaseAMT.setKart_id(resultSet.getString("Kart_id"));
                     kartaSybaseAMT.setData_oper(resultSet.getDate("Data_oper").toLocalDate());
                     kartaSybaseAMT.setReg_def(resultSet.getInt("reg_def"));
@@ -109,22 +116,15 @@ public class KartaDAOSybase {
                     kartaSybaseAMT.setTel_g(resultSet.getString("tel_g"));
                     kartaSybaseAMT.setMasa1(resultSet.getInt("masa1"));
 
-                    kartaSybaseAMTList.add(kartaSybaseAMT);
+//                    kartaSybaseAMTList.add(kartaSybaseAMT);
 
                     // Add to Postgres
+                    kartaDAOPostgres.addKarta(kartaSybaseAMT);
 
-
-                    // Write to file
-//                    System.out.println(kartaAMTList.toString());
-//                    fr.write("kartaAMTList.toString()");
-//                    writer.write(kartaSybaseAMTList.toString()+"\n");
-
-//                    writer.flush();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-//            System.out.println(kartaAMTList.toString());
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

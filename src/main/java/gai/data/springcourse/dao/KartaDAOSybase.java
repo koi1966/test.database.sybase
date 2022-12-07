@@ -5,7 +5,6 @@ import gai.data.springcourse.models.KartaSybase;
 import org.springframework.stereotype.Component;
 
 
-import java.io.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,10 +34,12 @@ public class KartaDAOSybase {
         }
 
 //        String SQLa = "SELECT * from gai.dbo.karta ";
-        String SQLa = "SELECT * from gai.dbo.karta WHERE id BETWEEN 1 AND 6";
+        String SQLa = "SELECT * from karta WHERE id BETWEEN 50001 AND 60000";
+
+
 
         try {
-
+//            Warning:(42, 50) Method invocation 'executeQuery' may produce 'NullPointerException'
             try (ResultSet resultSet = statement.executeQuery(SQLa)) {
 
 //                FileWriter writer = new FileWriter("c:/outputKarta.txt", true);
@@ -52,8 +53,8 @@ public class KartaDAOSybase {
                     kartaSybaseAMT.setNum_dv(resultSet.getString("num_dv"));
                     kartaSybaseAMT.setNum_cuz(resultSet.getString("num_cuz"));
                     kartaSybaseAMT.setNum_shas(resultSet.getString("num_shas"));
-                    kartaSybaseAMT.setData_v(resultSet.getInt("Data_v"));
-                    kartaSybaseAMT.setColor(resultSet.getString("Color"));
+                    kartaSybaseAMT.setData_v(resultSet.getInt("data_v"));
+                    kartaSybaseAMT.setColor(resultSet.getString("color"));
                     kartaSybaseAMT.setCuzov(resultSet.getString("cuzov"));
                     kartaSybaseAMT.setTip(resultSet.getString("tip"));
                     kartaSybaseAMT.setMarka(resultSet.getString("marka"));
@@ -64,6 +65,7 @@ public class KartaDAOSybase {
                     kartaSybaseAMT.setZnak(resultSet.getString("znak"));
                     kartaSybaseAMT.setAnnot(resultSet.getString("annot"));
                     kartaSybaseAMT.setCode_oper(resultSet.getString("code_oper"));
+                    kartaSybaseAMT.setNom_naklad(resultSet.getInt("nom_naklad"));
                     kartaSybaseAMT.setData_naklad(resultSet.getDate("data_naklad").toLocalDate());
                     kartaSybaseAMT.setMasa(resultSet.getInt("masa"));
                     kartaSybaseAMT.setStatus(resultSet.getInt("status"));
@@ -85,15 +87,14 @@ public class KartaDAOSybase {
                     kartaSybaseAMT.setFname(resultSet.getString("fname"));
                     kartaSybaseAMT.setSec_name(resultSet.getString("sec_name"));
                     kartaSybaseAMT.setFamily_lat(resultSet.getString("family_lat"));
+                    kartaSybaseAMT.setFname_lat(resultSet.getString("fname_lat"));
                     kartaSybaseAMT.setPermis(resultSet.getString("permis"));
-
                     try {
                         kartaSybaseAMT.setBorn(resultSet.getDate("born").toLocalDate());
                     } catch (NullPointerException e) {
-                            System.out.println(e.getMessage());
+                        System.out.println(e.getMessage());
                         kartaSybaseAMT.setBorn(LocalDate.parse("1900-01-01"));
                     }
-
                     kartaSybaseAMT.setPasport(resultSet.getString("pasport"));
                     kartaSybaseAMT.setPasp_cto(resultSet.getString("pasp_cto"));
                     kartaSybaseAMT.setObl(resultSet.getString("obl"));
@@ -108,7 +109,7 @@ public class KartaDAOSybase {
                     kartaSybaseAMT.setOffice(resultSet.getString("office"));
                     kartaSybaseAMT.setDolj(resultSet.getString("dolj"));
                     kartaSybaseAMT.setObl_g(resultSet.getString("obl_g"));
-                    kartaSybaseAMT.setFname(resultSet.getString("rajon_g"));
+                    kartaSybaseAMT.setRajon_g(resultSet.getString("rajon_g"));
                     kartaSybaseAMT.setCity_g(resultSet.getString("city_g"));
                     kartaSybaseAMT.setStreet_g(resultSet.getString("street_g"));
                     kartaSybaseAMT.setCorp_g(resultSet.getString("corp_g"));
@@ -116,14 +117,8 @@ public class KartaDAOSybase {
                     kartaSybaseAMT.setTel_g(resultSet.getString("tel_g"));
                     kartaSybaseAMT.setMasa1(resultSet.getInt("masa1"));
 
-//                    kartaSybaseAMTList.add(kartaSybaseAMT);
-
-                    // Add to Postgres
                     kartaDAOPostgres.addKarta(kartaSybaseAMT);
-
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
 
         } catch (SQLException e) {

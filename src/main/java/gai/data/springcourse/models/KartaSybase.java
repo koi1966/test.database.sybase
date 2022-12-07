@@ -72,12 +72,10 @@ public class KartaSybase {
     private String corp_g;
     private String house_g;
     private String tel_g;
-    private int masa1;
+    private    int masa1;
 
     public KartaSybase() {
     }
-    //        '^'
-
 
     public Long getId() {
         return id;

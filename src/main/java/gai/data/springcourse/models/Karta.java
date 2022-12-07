@@ -3,11 +3,18 @@ package gai.data.springcourse.models;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Getter
 @Setter
-public class KartaPostgres {
+@Entity
+public class Karta {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String kart_id;
     private LocalDate data_oper;
@@ -74,7 +81,7 @@ public class KartaPostgres {
     private String tel_g;
     private int masa1;
 
-    public KartaPostgres() {
+    public Karta() {
     }
 
 

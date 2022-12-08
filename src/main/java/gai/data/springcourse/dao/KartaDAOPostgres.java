@@ -88,9 +88,9 @@ public class KartaDAOPostgres {
             statementPostgres.setString(62, kartaS.getHouse_g());
             statementPostgres.setString(63, kartaS.getTel_g());
             statementPostgres.setInt(64, kartaS.getMasa1());
-
-            int num = statementPostgres.executeUpdate();
-            System.out.println(num);
+//            statementPostgres.executeUpdate();
+            int num =statementPostgres.executeUpdate();
+//            System.out.print(num);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -8,6 +8,7 @@ import gai.data.springcourse.models.KartaSybase;
 import gai.data.springcourse.models.KartaAMT;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,7 @@ public class KartaController {
   }
 
   @GetMapping("/m")
-  public String migrationKarta() throws IOException {
+  public String migrationKarta() throws SQLException {
     final List<KartaSybase> kartaSybase = kartaExport.searchKarta();
 //    System.out.println(karta.toString());
     return null;

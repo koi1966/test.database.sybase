@@ -42,17 +42,18 @@ public class KartaDAOSybase {
         try {
 //            Warning:(42, 50) Method invocation 'executeQuery' may produce 'NullPointerException'
 
-            {   long minId = 0;
-                long maxId = 15000;
+            {   long minId = 19300000687701963L;
+                long maxId = 41750000000308968L;
+
                 System.out.println("minId - " + minId + "  maxId - " + maxId);
-                for ( ;maxId < 31750000000308968L; ) {
+                for ( ;maxId < 51750000000308968L; ) {
                     preparedStatement.setLong(1,minId);
                     preparedStatement.setLong(2,maxId);
                     try (ResultSet resultSet = preparedStatement.executeQuery()) {
 
                         while (resultSet.next()) {
                             KartaSybase kartaSybaseAMT = new KartaSybase();
-//                    kartaSybaseAMT.setId(resultSet.getLong("id"));
+                            kartaSybaseAMT.setId(resultSet.getLong("id"));
                             kartaSybaseAMT.setKart_id(resultSet.getString("Kart_id"));
                             kartaSybaseAMT.setData_oper(resultSet.getDate("Data_oper").toLocalDate());
                             kartaSybaseAMT.setReg_def(resultSet.getInt("reg_def"));
@@ -72,7 +73,12 @@ public class KartaDAOSybase {
                             kartaSybaseAMT.setAnnot(resultSet.getString("annot"));
                             kartaSybaseAMT.setCode_oper(resultSet.getString("code_oper"));
                             kartaSybaseAMT.setNom_naklad(resultSet.getInt("nom_naklad"));
-                            kartaSybaseAMT.setData_naklad(resultSet.getDate("data_naklad").toLocalDate());
+                            try {
+                                kartaSybaseAMT.setData_naklad(resultSet.getDate("data_naklad").toLocalDate());
+                            } catch (NullPointerException e) {
+//                        System.out.println(e.getMessage());
+                                kartaSybaseAMT.setData_naklad(LocalDate.parse("1900-01-01"));
+                            }
                             kartaSybaseAMT.setMasa(resultSet.getInt("masa"));
                             kartaSybaseAMT.setStatus(resultSet.getInt("status"));
                             kartaSybaseAMT.setRegion(resultSet.getString("region"));
@@ -127,7 +133,7 @@ public class KartaDAOSybase {
                         }
                     }
                     minId = maxId + 1;
-                    maxId = maxId + 15000;
+                    maxId = maxId + 30000;
 
                     System.out.println("minId - " + minId + "  maxId - " + maxId);
                 }

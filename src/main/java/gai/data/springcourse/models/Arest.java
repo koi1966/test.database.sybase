@@ -1,26 +1,56 @@
 package gai.data.springcourse.models;
 
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@Entity
 public class Arest {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "id", nullable = false)
+    private Long id;
+    //    not null
+    private LocalDate data_arest;
+//    not null
+    private String kart_id;
+//    not null
+    private String who_na;
+    private String in_nom;
+    private LocalDate data_in;
 
-//    data_arest  datetime(23,3) not null,
-//    kart_id     varchar(20) not null,
-//    who_na      varchar(40) not null,
-//    in_nom      varchar(10),
-//    data_in     datetime(23,3),
-//    data_sna    datetime(23,3),
-//    who_sha     varchar(40),
-//    out_nom     varchar(10),
-//    data_out    datetime(23,3),
-//    oper_in     varchar(15),
-//    oper_out    varchar(15),
-//    vlad        varchar(61),
-//    ish_answer1 int,
-//    ish_answer2 int,
-//    k_nom1      varchar(10),
-//    k_data1     datetime(23,3),
-//    k_nom2      varchar(10),
-//    k_data2     datetime(23,3),
-//    commenta    varchar(255),
-//    time_fix    datetime(23,3) not null,
+    private LocalDate data_sna ;
+
+    private String who_sha;
+
+    private String out_nom;
+
+    private LocalDate data_out;
+
+    private String oper_in;
+
+    private String oper_out;
+
+    private String vlad ;
+
+    private int ish_answer1;
+    private int ish_answer2;
+    private String k_nom1;
+
+    private LocalDate k_data1;
+
+    private String k_nom2 ;
+
+    private LocalDate k_data2;
+
+    private String commenta;
+//    not null
+    private LocalDate time_fix;
+
+    public Arest() {
+    }
 }

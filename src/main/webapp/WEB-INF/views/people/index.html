@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en"
-
-xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org" >
-
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
 <body>
 
-<!--<div th:each="kartaAMT : ${karta}">-->
+<!--<div th:each="kartaAMT : ${kartaSybase}">-->
 
 <!--    <a-->
-<!--&lt;!&ndash;            th:href="@{/people/{id}(id=${karta.getId()})}"&ndash;&gt;-->
+<!--&lt;!&ndash;            th:href="@{/people/{id}(id=${kartaSybase.getId()})}"&ndash;&gt;-->
 <!--            th:text="${kartaAMT.getFamily()}"-->
 <!--    ></a>-->
 
 <!--</div>-->
 
 <div th:each="person : ${people}">
-    <a
-          th:href="@{/people/{id}(id=${person.getId()})}"
-       th:text="${person.getName() + ', ' + person.getAge()+', ' + person.getEmail()}"
-    >user</a>
-   Результат:
+<!--    <a-->
+<!--            th:href="@{/people/{id}(id=${person.getId()})}"-->
+<!--            th:text="${person.getName() + ', ' + person.getAge()+', ' + person.getEmail()}"-->
+<!--    >user</a>-->
+<!--    Результат:-->
 </div>
 
 
 <br/>
 <hr/>
 
-Результат:
+Шукати:
 <!--<p th:text="${result}"/>-->
 
-<a href="/people/new">Create new person</a>
-<a href="/karta/searchAMT">Компан</a>
+<!--<a href="/people/new">Create new person</a>-->
+<a href="/kartaSybase/searchAMT">Компан</a>
 
 
 </body>

@@ -153,12 +153,30 @@ public class KartaDAOSybase {
                 arestSybase.setData_sna(resultSet.getDate("data_sna"));
                 arestSybase.setWho_sha(resultSet.getString("who_sha"));
                 arestSybase.setOut_nom(resultSet.getString("out_nom"));
+                try {
+                    arestSybase.setData_out(resultSet.getDate("data_out"));
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                    arestSybase.setData_out(Date.valueOf("1900-01-01"));
+                }
                 arestSybase.setData_out(resultSet.getDate("data_out"));
                 arestSybase.setOper_in(resultSet.getString("oper_in"));
+
                 arestSybase.setOper_out(resultSet.getString("oper_out"));
+
                 arestSybase.setVlad(resultSet.getString("vlad"));
-                arestSybase.setIsh_answer1(resultSet.getInt("ish_answer1"));
-                arestSybase.setIsh_answer1(resultSet.getInt("ish_answer2"));
+                try {
+                    arestSybase.setIsh_answer1(resultSet.getInt("ish_answer1"));
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                    arestSybase.setIsh_answer1(0);
+                }
+                try {
+                    arestSybase.setIsh_answer1(resultSet.getInt("ish_answer2"));
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                    arestSybase.setIsh_answer2(0);
+                }
                 arestSybase.setK_nom1(resultSet.getString("k_nom1"));
                 arestSybase.setK_data1(resultSet.getDate("k_data1"));
                 arestSybase.setK_nom2(resultSet.getString("k_nom2"));

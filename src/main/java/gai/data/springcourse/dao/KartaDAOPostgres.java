@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import static gai.data.springcourse.bl.DataDAOPostgres.connectionPos;
 
@@ -113,18 +112,14 @@ public class KartaDAOPostgres {
             statementPostgres.setString(2, arestSybase.getKart_id());
             statementPostgres.setString(3, arestSybase.getWho_na());
             statementPostgres.setString(4, arestSybase.getIn_nom());
-
             try {
                 statementPostgres.setDate(5, arestSybase.getData_in());
             } catch (NullPointerException e) {
                 System.out.println(e.getMessage());
                 statementPostgres.setDate(5, Date.valueOf("1900-01-01"));
             }
-
-
             statementPostgres.setDate(6, arestSybase.getData_sna());
             statementPostgres.setString(7, arestSybase.getWho_sha());
-
             statementPostgres.setString(8, arestSybase.getOut_nom());
             try {
                 statementPostgres.setDate(9, arestSybase.getData_out());
@@ -136,7 +131,12 @@ public class KartaDAOPostgres {
             statementPostgres.setString(11, arestSybase.getOper_out());
             statementPostgres.setString(12, arestSybase.getVlad());
             statementPostgres.setInt(13, arestSybase.getIsh_answer1());
-            statementPostgres.setInt(14, arestSybase.getIsh_answer2());
+            try {
+                statementPostgres.setInt(14, arestSybase.getIsh_answer2());
+            } catch (NullPointerException e) {
+                System.out.println(e.getMessage());
+                statementPostgres.setInt(14, 0);
+            }
             statementPostgres.setString(15, arestSybase.getK_nom1());
             statementPostgres.setDate(16, arestSybase.getK_data1());
             statementPostgres.setString(17, arestSybase.getK_nom2());

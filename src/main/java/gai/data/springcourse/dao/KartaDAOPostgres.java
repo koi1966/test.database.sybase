@@ -17,7 +17,7 @@ public class KartaDAOPostgres {
     public void addKarta(KartaSybase kartaS) {
 
         try {
-            PreparedStatement statementPostgres = connectionPos.prepareStatement("INSERT INTO karta (id, kart_id, data_oper,reg_def," +
+            PreparedStatement statementPostgres = connectionPos.prepareStatement("INSERT INTO karta2 (id, kart_id, data_oper,reg_def," +
                     "num_dv,num_cuz,num_shas,data_v,color,cuzov,tip,marka,model,who,teh_pasp,type_zn,znak,annot," +
                     "code_oper,nom_naklad,data_naklad,masa,status,region,ministr_name,insp,ispekt_osm,who_out,regim," +
                     "power,volume,cylinder,door,fuel,place,tom,sob_id,family,fname,sec_name,family_lat,fname_lat,permis," +
@@ -28,7 +28,7 @@ public class KartaDAOPostgres {
 
             statementPostgres.setLong(1, kartaS.getId());
             statementPostgres.setString(2, kartaS.getKart_id());
-            statementPostgres.setDate(3, Date.valueOf(kartaS.getData_oper()));
+            statementPostgres.setTimestamp(3, kartaS.getData_oper());
             statementPostgres.setInt(4, kartaS.getReg_def());
             statementPostgres.setString(5, kartaS.getNum_dv());
             statementPostgres.setString(6, kartaS.getNum_cuz());
@@ -46,7 +46,7 @@ public class KartaDAOPostgres {
             statementPostgres.setString(18, kartaS.getAnnot());
             statementPostgres.setString(19, kartaS.getCode_oper());
             statementPostgres.setInt(20, kartaS.getNom_naklad());
-            statementPostgres.setDate(21, Date.valueOf(kartaS.getData_naklad()));
+            statementPostgres.setTimestamp(21, (kartaS.getData_naklad()));
             statementPostgres.setInt(22, kartaS.getMasa());
             statementPostgres.setInt(23, kartaS.getStatus());
             statementPostgres.setString(24, kartaS.getRegion());
@@ -69,7 +69,7 @@ public class KartaDAOPostgres {
             statementPostgres.setString(41, kartaS.getFamily_lat());
             statementPostgres.setString(42, kartaS.getFname_lat());
             statementPostgres.setString(43, kartaS.getPermis());
-            statementPostgres.setDate(44, Date.valueOf(kartaS.getBorn()));
+            statementPostgres.setTimestamp(44, kartaS.getBorn());
             statementPostgres.setString(45, kartaS.getPasport());
             statementPostgres.setString(46, kartaS.getPasp_cto());
             statementPostgres.setString(47, kartaS.getObl());
@@ -108,21 +108,21 @@ public class KartaDAOPostgres {
                     "ish_answer2,k_nom1,k_data1,k_nom2,k_data2,commenta,time_fix) Values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?," +
                     "?,?,?,?,?)");
 
-            statementPostgres.setDate(1, arestSybase.getData_arest());
+            statementPostgres.setTimestamp(1, arestSybase.getData_arest());
             statementPostgres.setString(2, arestSybase.getKart_id());
             statementPostgres.setString(3, arestSybase.getWho_na());
             statementPostgres.setString(4, arestSybase.getIn_nom());
             try {
-                statementPostgres.setDate(5, arestSybase.getData_in());
+                statementPostgres.setTimestamp(5, arestSybase.getData_in());
             } catch (NullPointerException e) {
                 System.out.println(e.getMessage());
                 statementPostgres.setDate(5, Date.valueOf("1900-01-01"));
             }
-            statementPostgres.setDate(6, arestSybase.getData_sna());
+            statementPostgres.setTimestamp(6, arestSybase.getData_sna());
             statementPostgres.setString(7, arestSybase.getWho_sha());
             statementPostgres.setString(8, arestSybase.getOut_nom());
             try {
-                statementPostgres.setDate(9, arestSybase.getData_out());
+                statementPostgres.setTimestamp(9, arestSybase.getData_out());
             } catch (NullPointerException e) {
                 System.out.println(e.getMessage());
                 statementPostgres.setDate(9, Date.valueOf("1900-01-01"));
@@ -138,9 +138,9 @@ public class KartaDAOPostgres {
                 statementPostgres.setInt(14, 0);
             }
             statementPostgres.setString(15, arestSybase.getK_nom1());
-            statementPostgres.setDate(16, arestSybase.getK_data1());
+            statementPostgres.setTimestamp(16, arestSybase.getK_data1());
             statementPostgres.setString(17, arestSybase.getK_nom2());
-            statementPostgres.setDate(18, arestSybase.getK_data2());
+            statementPostgres.setTimestamp(18, arestSybase.getK_data2());
             statementPostgres.setString(19, arestSybase.getCommenta());
             statementPostgres.setTimestamp(20, arestSybase.getTime_fix());
 

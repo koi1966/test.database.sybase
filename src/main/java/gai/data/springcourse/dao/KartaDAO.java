@@ -24,6 +24,7 @@ public class KartaDAO {
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }
+
     String SQLa = "SELECT * from karta where ";
     if (!kar.getZnak().isEmpty()) {
       SQLa = SQLa + "znak like '" + kar.getZnak() + "' ";

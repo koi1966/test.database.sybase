@@ -1,38 +1,29 @@
 package gai.data.springcourse.models;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class ArestSybase {
 
-  private Date data_arest;
+  private Timestamp data_arest;
   private String kart_id;
   private String who_na;
   private String in_nom;
-  private Date data_in;
-  private Date data_sna;
+  private Timestamp data_in;
+  private Timestamp data_sna;
   private String who_sha;
   private String out_nom;
-  private Date data_out;
+  private Timestamp data_out;
   private String oper_in;
   private String oper_out;
   private String vlad;
   private Integer ish_answer1;
   private Integer ish_answer2;
   private String k_nom1;
-  private Date k_data1;
+  private Timestamp k_data1;
   private String k_nom2;
-  private Date k_data2;
+  private Timestamp k_data2;
   private String commenta;
   private Timestamp time_fix;
-
-  public Date getData_arest() {
-    return data_arest;
-  }
-
-  public void setData_arest(Date data_arest) {
-    this.data_arest = data_arest;
-  }
 
   public String getKart_id() {
     return kart_id;
@@ -58,22 +49,6 @@ public class ArestSybase {
     this.in_nom = in_nom;
   }
 
-  public Date getData_in() {
-    return data_in;
-  }
-
-  public void setData_in(Date data_in) {
-    this.data_in = data_in;
-  }
-
-  public Date getData_sna() {
-    return data_sna;
-  }
-
-  public void setData_sna(Date data_sna) {
-    this.data_sna = data_sna;
-  }
-
   public String getWho_sha() {
     return who_sha;
   }
@@ -88,14 +63,6 @@ public class ArestSybase {
 
   public void setOut_nom(String out_nom) {
     this.out_nom = out_nom;
-  }
-
-  public Date getData_out() {
-    return data_out;
-  }
-
-  public void setData_out(Date data_out) {
-    this.data_out = data_out;
   }
 
   public String getOper_in() {
@@ -146,14 +113,6 @@ public class ArestSybase {
     this.k_nom1 = k_nom1;
   }
 
-  public Date getK_data1() {
-    return k_data1;
-  }
-
-  public void setK_data1(Date k_data1) {
-    this.k_data1 = k_data1;
-  }
-
   public String getK_nom2() {
     return k_nom2;
   }
@@ -162,11 +121,51 @@ public class ArestSybase {
     this.k_nom2 = k_nom2;
   }
 
-  public Date getK_data2() {
+  public Timestamp getData_arest() {
+    return data_arest;
+  }
+
+  public void setData_arest(Timestamp data_arest) {
+    this.data_arest = data_arest;
+  }
+
+  public Timestamp getData_in() {
+    return data_in;
+  }
+
+  public void setData_in(Timestamp data_in) {
+    this.data_in = data_in;
+  }
+
+  public Timestamp getData_sna() {
+    return data_sna;
+  }
+
+  public void setData_sna(Timestamp data_sna) {
+    this.data_sna = data_sna;
+  }
+
+  public Timestamp getData_out() {
+    return data_out;
+  }
+
+  public void setData_out(Timestamp data_out) {
+    this.data_out = data_out;
+  }
+
+  public Timestamp getK_data1() {
+    return k_data1;
+  }
+
+  public void setK_data1(Timestamp k_data1) {
+    this.k_data1 = k_data1;
+  }
+
+  public Timestamp getK_data2() {
     return k_data2;
   }
 
-  public void setK_data2(Date k_data2) {
+  public void setK_data2(Timestamp k_data2) {
     this.k_data2 = k_data2;
   }
 

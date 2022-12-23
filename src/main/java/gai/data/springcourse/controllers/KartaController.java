@@ -64,7 +64,7 @@ public class KartaController {
     return "karta/historearest";
   }
 
-  @GetMapping("/mq")
+  @GetMapping("/m")
   public String migrationKarta() throws SQLException {
     final List<KartaSybase> kartaSybase = kartaExport.searchKarta();
 //    System.out.println(karta.toString());

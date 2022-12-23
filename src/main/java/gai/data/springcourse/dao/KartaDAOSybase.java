@@ -33,10 +33,10 @@ public class KartaDAOSybase {
 //            Warning:(42, 50) Method invocation 'executeQuery' may produce 'NullPointerException'
 
             {   long minId = 0L;
-                long maxId = 41750000000308968L;
+                long maxId = 100000L;
 
                 System.out.println("minId - " + minId + "  maxId - " + maxId);
-                for ( ;maxId < 51750000000308968L; ) {
+                for ( ;maxId < 31750000000508968L; ) {
                     preparedStatement.setLong(1,minId);
                     preparedStatement.setLong(2,maxId);
                     try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -45,7 +45,7 @@ public class KartaDAOSybase {
                             KartaSybase kartaSybaseAMT = new KartaSybase();
                             kartaSybaseAMT.setId(resultSet.getLong("id"));
                             kartaSybaseAMT.setKart_id(resultSet.getString("Kart_id"));
-                            kartaSybaseAMT.setData_oper(resultSet.getDate("Data_oper").toLocalDate());
+                            kartaSybaseAMT.setData_oper(resultSet.getTimestamp("Data_oper"));
                             kartaSybaseAMT.setReg_def(resultSet.getInt("reg_def"));
                             kartaSybaseAMT.setNum_dv(resultSet.getString("num_dv"));
                             kartaSybaseAMT.setNum_cuz(resultSet.getString("num_cuz"));
@@ -64,10 +64,10 @@ public class KartaDAOSybase {
                             kartaSybaseAMT.setCode_oper(resultSet.getString("code_oper"));
                             kartaSybaseAMT.setNom_naklad(resultSet.getInt("nom_naklad"));
                             try {
-                                kartaSybaseAMT.setData_naklad(resultSet.getDate("data_naklad").toLocalDate());
+                                kartaSybaseAMT.setData_naklad(resultSet.getTimestamp("data_naklad"));
                             } catch (NullPointerException e) {
 //                        System.out.println(e.getMessage());
-                                kartaSybaseAMT.setData_naklad(LocalDate.parse("1900-01-01"));
+                                kartaSybaseAMT.setData_naklad(Timestamp.valueOf("1900-01-01"));
                             }
                             kartaSybaseAMT.setMasa(resultSet.getInt("masa"));
                             kartaSybaseAMT.setStatus(resultSet.getInt("status"));
@@ -92,10 +92,10 @@ public class KartaDAOSybase {
                             kartaSybaseAMT.setFname_lat(resultSet.getString("fname_lat"));
                             kartaSybaseAMT.setPermis(resultSet.getString("permis"));
                             try {
-                                kartaSybaseAMT.setBorn(resultSet.getDate("born").toLocalDate());
+                                kartaSybaseAMT.setBorn(resultSet.getTimestamp("born"));
                             } catch (NullPointerException e) {
 //                        System.out.println(e.getMessage());
-                                kartaSybaseAMT.setBorn(LocalDate.parse("1900-01-01"));
+                                kartaSybaseAMT.setBorn(Timestamp.valueOf("1900-01-01"));
                             }
                             kartaSybaseAMT.setPasport(resultSet.getString("pasport"));
                             kartaSybaseAMT.setPasp_cto(resultSet.getString("pasp_cto"));
@@ -123,7 +123,7 @@ public class KartaDAOSybase {
                         }
                     }
                     minId = maxId + 1;
-                    maxId = maxId + 30000;
+                    maxId = maxId + 100000;
 
                     System.out.println("minId - " + minId + "  maxId - " + maxId);
                 }
@@ -145,21 +145,21 @@ public class KartaDAOSybase {
             while (resultSet.next()) {
                 ArestSybase arestSybase = new ArestSybase();
 //                arestSybase.setId(resultSet.getLong("id"));
-                arestSybase.setData_arest(resultSet.getDate("data_arest"));
+                arestSybase.setData_arest(resultSet.getTimestamp("data_arest"));
                 arestSybase.setKart_id(resultSet.getString("Kart_id"));
                 arestSybase.setWho_na(resultSet.getString("who_na"));
                 arestSybase.setIn_nom(resultSet.getString("in_nom"));
-                arestSybase.setData_in(resultSet.getDate("data_in"));
-                arestSybase.setData_sna(resultSet.getDate("data_sna"));
+                arestSybase.setData_in(resultSet.getTimestamp("data_in"));
+                arestSybase.setData_sna(resultSet.getTimestamp("data_sna"));
                 arestSybase.setWho_sha(resultSet.getString("who_sha"));
                 arestSybase.setOut_nom(resultSet.getString("out_nom"));
-                try {
-                    arestSybase.setData_out(resultSet.getDate("data_out"));
-                } catch (NullPointerException e) {
-                    System.out.println(e.getMessage());
-                    arestSybase.setData_out(Date.valueOf("1900-01-01"));
-                }
-                arestSybase.setData_out(resultSet.getDate("data_out"));
+//                try {
+                    arestSybase.setData_out(resultSet.getTimestamp("data_out"));
+//                } catch (NullPointerException e) {
+//                    System.out.println(e.getMessage());
+//                    arestSybase.setData_out(Date.valueOf("1900-01-01"));
+//                }
+                arestSybase.setData_out(resultSet.getTimestamp("data_out"));
                 arestSybase.setOper_in(resultSet.getString("oper_in"));
 
                 arestSybase.setOper_out(resultSet.getString("oper_out"));
@@ -178,9 +178,9 @@ public class KartaDAOSybase {
                     arestSybase.setIsh_answer2(0);
                 }
                 arestSybase.setK_nom1(resultSet.getString("k_nom1"));
-                arestSybase.setK_data1(resultSet.getDate("k_data1"));
+                arestSybase.setK_data1(resultSet.getTimestamp("k_data1"));
                 arestSybase.setK_nom2(resultSet.getString("k_nom2"));
-                arestSybase.setK_data2(resultSet.getDate("k_data2"));
+                arestSybase.setK_data2(resultSet.getTimestamp("k_data2"));
                 arestSybase.setCommenta(resultSet.getString("commenta"));
                 arestSybase.setTime_fix(resultSet.getTimestamp("time_fix"));
 

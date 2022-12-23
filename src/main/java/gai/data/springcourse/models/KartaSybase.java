@@ -3,14 +3,14 @@ package gai.data.springcourse.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
 public class KartaSybase {
     private Long id;
     private String kart_id;
-    private LocalDate data_oper;
+    private Timestamp data_oper;
     private int reg_def;
     private String num_dv;
     private String num_cuz;
@@ -28,7 +28,7 @@ public class KartaSybase {
     private String annot;
     private String code_oper;
     private int nom_naklad;
-    private LocalDate data_naklad;
+    private Timestamp data_naklad;
     private int masa;
     private int status;
     private String region;
@@ -51,7 +51,7 @@ public class KartaSybase {
     private String family_lat;
     private String fname_lat;
     private String permis;
-    private LocalDate born;
+    private Timestamp born;
     private String pasport;
     private String pasp_cto;
     private String obl;
@@ -93,11 +93,11 @@ public class KartaSybase {
         this.kart_id = kart_id;
     }
 
-    public LocalDate getData_oper() {
+    public Timestamp getData_oper() {
         return data_oper;
     }
 
-    public void setData_oper(LocalDate data_oper) {
+    public void setData_oper(Timestamp data_oper) {
         this.data_oper = data_oper;
     }
 
@@ -237,11 +237,11 @@ public class KartaSybase {
         this.nom_naklad = nom_naklad;
     }
 
-    public LocalDate getData_naklad() {
+    public Timestamp getData_naklad() {
         return data_naklad;
     }
 
-    public void setData_naklad(LocalDate data_naklad) {
+    public void setData_naklad(Timestamp data_naklad) {
         this.data_naklad = data_naklad;
     }
 
@@ -421,11 +421,11 @@ public class KartaSybase {
         this.permis = permis;
     }
 
-    public LocalDate getBorn() {
+    public Timestamp getBorn() {
         return born;
     }
 
-    public void setBorn(LocalDate born) {
+    public void setBorn(Timestamp born) {
         this.born = born;
     }
 
@@ -595,144 +595,5 @@ public class KartaSybase {
 
     public void setMasa1(int masa1) {
         this.masa1 = masa1;
-    }
-
-    public KartaSybase(Long id, String kart_id, LocalDate data_oper, int reg_def, String num_dv, String num_cuz, String num_shas, int data_v, String color, String cuzov, String tip, String marka, String model, int who, String teh_pasp, int type_zn, String znak, String annot, String code_oper, int nom_naklad, LocalDate data_naklad, int masa, int status, String region, String ministr_name, String insp, String ispekt_osm, String who_out, int regim, String power, String volume, String cylinder, String door, String fuel, String place, String tom, String sob_id, String family, String fname, String sec_name, String family_lat, String fname_lat, String permis, LocalDate born, String pasport, String pasp_cto, String obl, String rajon, String city, String street, String house, String corp, String kv, String tel, String tel_work, String office, String dolj, String obl_g, String rajon_g, String city_g, String street_g, String corp_g, String house_g, String tel_g, int masa1) {
-        this.id = id;
-        this.kart_id = kart_id;
-        this.data_oper = data_oper;
-        this.reg_def = reg_def;
-        this.num_dv = num_dv;
-        this.num_cuz = num_cuz;
-        this.num_shas = num_shas;
-        this.data_v = data_v;
-        this.color = color;
-        this.cuzov = cuzov;
-        this.tip = tip;
-        this.marka = marka;
-        this.model = model;
-        this.who = who;
-        this.teh_pasp = teh_pasp;
-        this.type_zn = type_zn;
-        this.znak = znak;
-        this.annot = annot;
-        this.code_oper = code_oper;
-        this.nom_naklad = nom_naklad;
-        this.data_naklad = data_naklad;
-        this.masa = masa;
-        this.status = status;
-        this.region = region;
-        this.ministr_name = ministr_name;
-        this.insp = insp;
-        this.ispekt_osm = ispekt_osm;
-        this.who_out = who_out;
-        this.regim = regim;
-        this.power = power;
-        this.volume = volume;
-        this.cylinder = cylinder;
-        this.door = door;
-        this.fuel = fuel;
-        this.place = place;
-        this.tom = tom;
-        this.sob_id = sob_id;
-        this.family = family;
-        this.fname = fname;
-        this.sec_name = sec_name;
-        this.family_lat = family_lat;
-        this.fname_lat = fname_lat;
-        this.permis = permis;
-        this.born = born;
-        this.pasport = pasport;
-        this.pasp_cto = pasp_cto;
-        this.obl = obl;
-        this.rajon = rajon;
-        this.city = city;
-        this.street = street;
-        this.house = house;
-        this.corp = corp;
-        this.kv = kv;
-        this.tel = tel;
-        this.tel_work = tel_work;
-        this.office = office;
-        this.dolj = dolj;
-        this.obl_g = obl_g;
-        this.rajon_g = rajon_g;
-        this.city_g = city_g;
-        this.street_g = street_g;
-        this.corp_g = corp_g;
-        this.house_g = house_g;
-        this.tel_g = tel_g;
-        this.masa1 = masa1;
-    }
-
-    @Override
-    public String toString() {
-        return "Karta{" +
-                "id=" + id +
-                ", kart_id='" + kart_id + '\'' +
-                ", data_oper=" + data_oper +
-                ", reg_def=" + reg_def +
-                ", num_dv='" + num_dv + '\'' +
-                ", num_cuz='" + num_cuz + '\'' +
-                ", num_shas='" + num_shas + '\'' +
-                ", data_v=" + data_v +
-                ", color='" + color + '\'' +
-                ", cuzov='" + cuzov + '\'' +
-                ", tip='" + tip + '\'' +
-                ", marka='" + marka + '\'' +
-                ", model='" + model + '\'' +
-                ", who=" + who +
-                ", teh_pasp='" + teh_pasp + '\'' +
-                ", type_zn=" + type_zn +
-                ", znak='" + znak + '\'' +
-                ", annot='" + annot + '\'' +
-                ", code_oper='" + code_oper + '\'' +
-                ", nom_naklad=" + nom_naklad +
-                ", data_naklad=" + data_naklad +
-                ", masa=" + masa +
-                ", status=" + status +
-                ", region='" + region + '\'' +
-                ", ministr_name='" + ministr_name + '\'' +
-                ", insp='" + insp + '\'' +
-                ", ispekt_osm='" + ispekt_osm + '\'' +
-                ", who_out='" + who_out + '\'' +
-                ", regim=" + regim +
-                ", power='" + power + '\'' +
-                ", volume='" + volume + '\'' +
-                ", cylinder='" + cylinder + '\'' +
-                ", door='" + door + '\'' +
-                ", fuel='" + fuel + '\'' +
-                ", place='" + place + '\'' +
-                ", tom='" + tom + '\'' +
-                ", sob_id='" + sob_id + '\'' +
-                ", family='" + family + '\'' +
-                ", fname='" + fname + '\'' +
-                ", sec_name='" + sec_name + '\'' +
-                ", family_lat='" + family_lat + '\'' +
-                ", fname_lat='" + fname_lat + '\'' +
-                ", permis='" + permis + '\'' +
-                ", born=" + born +
-                ", pasport='" + pasport + '\'' +
-                ", pasp_cto='" + pasp_cto + '\'' +
-                ", obl='" + obl + '\'' +
-                ", rajon='" + rajon + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", house='" + house + '\'' +
-                ", corp='" + corp + '\'' +
-                ", kv='" + kv + '\'' +
-                ", tel='" + tel + '\'' +
-                ", tel_work='" + tel_work + '\'' +
-                ", office='" + office + '\'' +
-                ", dolj='" + dolj + '\'' +
-                ", obl_g='" + obl_g + '\'' +
-                ", rajon_g='" + rajon_g + '\'' +
-                ", city_g='" + city_g + '\'' +
-                ", street_g='" + street_g + '\'' +
-                ", corp_g='" + corp_g + '\'' +
-                ", house_g='" + house_g + '\'' +
-                ", tel_g='" + tel_g + '\'' +
-                ", masa1=" + masa1 +
-                '}';
     }
 }

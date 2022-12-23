@@ -5,8 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.util.Date;
+
 
 @Getter
 @Setter
@@ -23,15 +22,15 @@ public class Arest {
 //    not null
     private String who_na;
     private String in_nom;
-    private Date data_in;
+    private Timestamp data_in;
 
-    private Date data_sna ;
+    private Timestamp data_sna ;
 
     private String who_sha;
 
     private String out_nom;
 
-    private Date data_out;
+    private Timestamp data_out;
 
     private String oper_in;
 

@@ -10,6 +10,7 @@ import gai.data.springcourse.models.KartaAMT;
 import java.sql.SQLException;
 import java.util.List;
 
+import gai.data.springcourse.models.OperSybase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,6 +75,13 @@ public class KartaController {
   @GetMapping("/a")
   public String migrationArest() throws SQLException {
     final List<ArestSybase> arestSybase = kartaExport.searchArest();
+//    System.out.println(karta.toString());
+    return null;
+  }
+
+  @GetMapping("/o")
+  public String migrationOper() throws SQLException {
+    final List<OperSybase> operSybase = kartaExport.searchOper();
 //    System.out.println(karta.toString());
     return null;
   }

@@ -2,6 +2,7 @@ package gai.data.springcourse.dao;
 
 import gai.data.springcourse.models.ArestSybase;
 import gai.data.springcourse.models.KartaSybase;
+import gai.data.springcourse.models.OperSybase;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
@@ -149,5 +150,34 @@ public class KartaDAOPostgres {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void addOper(OperSybase operSybase) {
+        PreparedStatement statementPostgres = null;
+
+        try {
+            statementPostgres = connectionPos.prepareStatement("INSERT INTO oper (" +
+                    "oper_id,sod_id,oper,ch_field,registration,vydacha,tip_registr,izjat,zapros,commenta,oper_nic,osn_para) " +
+                    "Values (?,?,?,?,?,?,?,?,?,?,?,?)");
+
+            statementPostgres.setString(1, operSybase.getOper_id());
+            statementPostgres.setString(2, operSybase.getSod_id());
+            statementPostgres.setString(3, operSybase.getOper());
+            statementPostgres.setString(4, operSybase.getCh_field());
+            statementPostgres.setInt(5, operSybase.getRegistration());
+            statementPostgres.setInt(6, operSybase.getVydacha());
+            statementPostgres.setInt(7, operSybase.getTip_registr());
+            statementPostgres.setInt(8, operSybase.getIzjat());
+            statementPostgres.setInt(9, operSybase.getZapros());
+            statementPostgres.setString(10, operSybase.getCommenta());
+            statementPostgres.setInt(11, operSybase.getOper_nic());
+            statementPostgres.setString(12, operSybase.getOsn_para());
+
+            statementPostgres.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

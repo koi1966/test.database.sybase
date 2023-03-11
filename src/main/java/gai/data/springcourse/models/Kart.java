@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-public class Karta {
+public class Kart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -81,7 +81,7 @@ public class Karta {
     private String tel_g;
     private int masa1;
 
-    public Karta() {
+    public Kart() {
     }
 
 

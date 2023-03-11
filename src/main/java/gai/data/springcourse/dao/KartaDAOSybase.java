@@ -1,13 +1,20 @@
 package gai.data.springcourse.dao;
 
+//select karta.*
+//        from karta
+//        where not exists (
+//        select 1
+//        from karta2
+//        where karta2.id = karta.id);
+
 import gai.data.springcourse.models.ArestSybase;
 import gai.data.springcourse.models.KartaSybase;
 
+import gai.data.springcourse.models.OperSybase;
 import org.springframework.stereotype.Component;
 
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,17 +35,18 @@ public class KartaDAOSybase {
         List<KartaSybase> kartaSybaseAMTList = new ArrayList<>();
 
         PreparedStatement preparedStatement = connectionSa.prepareStatement("SELECT * from karta WHERE id BETWEEN ? AND ?");
+        long minId = 31550000000308965L;
+        long maxId = 31750000000308968L;
 
         try {
 //            Warning:(42, 50) Method invocation 'executeQuery' may produce 'NullPointerException'
 
-            {   long minId = 0L;
-                long maxId = 100000L;
+            {
 
                 System.out.println("minId - " + minId + "  maxId - " + maxId);
-                for ( ;maxId < 31750000000508968L; ) {
-                    preparedStatement.setLong(1,minId);
-                    preparedStatement.setLong(2,maxId);
+                for (; maxId < 31750000000508968L; ) {
+                    preparedStatement.setLong(1, minId);
+                    preparedStatement.setLong(2, maxId);
                     try (ResultSet resultSet = preparedStatement.executeQuery()) {
 
                         while (resultSet.next()) {
@@ -123,7 +131,7 @@ public class KartaDAOSybase {
                         }
                     }
                     minId = maxId + 1;
-                    maxId = maxId + 100000;
+                    maxId = maxId + 1000000000000000L;
 
                     System.out.println("minId - " + minId + "  maxId - " + maxId);
                 }
@@ -154,7 +162,7 @@ public class KartaDAOSybase {
                 arestSybase.setWho_sha(resultSet.getString("who_sha"));
                 arestSybase.setOut_nom(resultSet.getString("out_nom"));
 //                try {
-                    arestSybase.setData_out(resultSet.getTimestamp("data_out"));
+                arestSybase.setData_out(resultSet.getTimestamp("data_out"));
 //                } catch (NullPointerException e) {
 //                    System.out.println(e.getMessage());
 //                    arestSybase.setData_out(Date.valueOf("1900-01-01"));
@@ -189,5 +197,37 @@ public class KartaDAOSybase {
         }
 
         return arestSybaseList;
+    }
+
+    public List<OperSybase> searchOper() throws SQLException {
+
+        List<ArestSybase> arestSybaseList = new ArrayList<>();
+
+        PreparedStatement preparedStatement = connectionSa.prepareStatement("SELECT * from oper");
+
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                OperSybase operSybase = new OperSybase();
+                operSybase.setOper_id(resultSet.getString("oper_id"));
+                operSybase.setSod_id(resultSet.getString("sod_id"));
+                operSybase.setOper(resultSet.getString("oper"));
+                operSybase.setCh_field(resultSet.getString("ch_field"));
+                operSybase.setRegistration(resultSet.getInt("registration"));
+                operSybase.setVydacha(resultSet.getInt("vydacha"));
+                operSybase.setTip_registr(resultSet.getInt("tip_registr"));
+                operSybase.setIzjat(resultSet.getInt("izjat"));
+                operSybase.setZapros(resultSet.getInt("zapros"));
+                operSybase.setCommenta(resultSet.getString("commenta"));
+                operSybase.setOper_nic(resultSet.getInt("oper_nic"));
+                operSybase.setOsn_para(resultSet.getString("osn_para"));
+
+                kartaDAOPostgres.addOper(operSybase);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
     }
 }
